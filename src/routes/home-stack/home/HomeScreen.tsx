@@ -1,11 +1,12 @@
+import {Container} from '@components';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 
 const HomeScreen = () => {
   return (
-    <View>
+    <Container>
       <Text>this is HomeScreen</Text>
-    </View>
+    </Container>
   );
 };
 

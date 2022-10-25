@@ -71,11 +71,19 @@ const IconSize = {
   SmallRating: 14,
 };
 
+const Spacing = {
+  small: 6,
+  normal: 10,
+  medium: 14,
+  large: 18,
+};
+
 const styles = {
   dimensions,
   Common,
   FontSize,
   IconSize,
+  Spacing,
 };
 
 export default styles;

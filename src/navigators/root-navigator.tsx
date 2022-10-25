@@ -16,7 +16,7 @@ import {
   CreditTabIcon,
   ProfileTabIcon,
   DebitCardIcon,
-} from 'src/assetss/icons/tabbar/index';
+} from 'src/assets/icons/tabbar/index';
 
 export type AuthenticatedParamsList = {};
 
@@ -65,6 +65,7 @@ const RootNavigator = () => {
         tabBarButtonColor: Colors.primary,
         tabBarSelectedButtonColor: Colors.deactive,
       }}
+      initialRouteName={Routers.DebitCardStack}
       tabBar={(props: JSX.IntrinsicAttributes) => <BottomTabBar {...props} />}>
       {TabList.map((tab, index) => (
         <Tab.Screen

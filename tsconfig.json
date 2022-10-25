@@ -13,11 +13,15 @@
       "skipLibCheck": true,
       "baseUrl": "./",
       "paths": {
+        "@assets": ["src/assets"],
+        "@assets/*": ["src/assets/*"],
         "@navigators": ["src/navigators"],
         "@routes/*": ["src/routes/*"],
         "@store": ["src/store"],
         "@components": ["src/components"],
-        "@assets/*": ["src/assetss/**"],
+        "@models/*": ["src/models/*"],
+        "@common": ["src/common"],
+        "@common/*": ["src/common/*"],
      
       },
       

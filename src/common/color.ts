@@ -3,6 +3,8 @@ const colors = {
 
   deactive: '#DDDDDD',
 
+  backgroundColor: '#0C365A',
+  
   // navigation bar
   headerTintColor: '#1CB5B4',
 
