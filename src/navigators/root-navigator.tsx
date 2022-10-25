@@ -13,8 +13,8 @@ import {Colors} from 'src/common';
 import {
   HomeTabIcon,
   PaymentTabIcon,
-  CreditIcon,
-  ProfileIcon,
+  CreditTabIcon,
+  ProfileTabIcon,
   DebitCardIcon,
 } from 'src/assetss/icons/tabbar/index';
 
@@ -22,6 +22,38 @@ export type AuthenticatedParamsList = {};
 
 const Tab = createBottomTabNavigator<AuthenticatedParamsList>();
 
+const TabList = [
+  {
+    routerName: Routers.HomeStack,
+    component: HomeNavigator,
+    label: 'Home',
+    icon: HomeTabIcon,
+  },
+  {
+    routerName: Routers.DebitCardStack,
+    component: DebitCardNavigator,
+    label: 'DebitCard',
+    icon: DebitCardIcon,
+  },
+  {
+    routerName: Routers.PaymentStack,
+    component: PaymentNavigator,
+    label: 'Payments',
+    icon: PaymentTabIcon,
+  },
+  {
+    routerName: Routers.CreditStack,
+    component: CreditNavigator,
+    label: 'Credit',
+    icon: CreditTabIcon,
+  },
+  {
+    routerName: Routers.ProfileStack,
+    component: ProfileNavigator,
+    label: 'Profile',
+    icon: ProfileTabIcon,
+  },
+];
 const RootNavigator = () => {
   return (
     <Tab.Navigator
@@ -34,51 +66,18 @@ const RootNavigator = () => {
         tabBarSelectedButtonColor: Colors.deactive,
       }}
       tabBar={(props: JSX.IntrinsicAttributes) => <BottomTabBar {...props} />}>
-      <Tab.Screen
-        name={Routers.HomeStack}
-        component={HomeNavigator}
-        options={{
-          tabBarLabel: 'Home',
-          headerShown: false,
-          tabBarIcon: HomeTabIcon,
-        }}
-      />
-      <Tab.Screen
-        name={Routers.DebitCardStack}
-        component={DebitCardNavigator}
-        options={{
-          tabBarLabel: 'DebitCard',
-          headerShown: false,
-          tabBarIcon: DebitCardIcon,
-        }}
-      />
-      <Tab.Screen
-        name={Routers.PaymentStack}
-        component={PaymentNavigator}
-        options={{
-          tabBarLabel: 'DebitCard',
-          headerShown: false,
-          tabBarIcon: PaymentTabIcon,
-        }}
-      />
-      <Tab.Screen
-        name={Routers.CreditStack}
-        component={CreditNavigator}
-        options={{
-          tabBarLabel: 'DebitCard',
-          headerShown: false,
-          tabBarIcon: CreditIcon,
-        }}
-      />
-      <Tab.Screen
-        name={Routers.ProfileStack}
-        component={ProfileNavigator}
-        options={{
-          tabBarLabel: 'DebitCard',
-          headerShown: false,
-          tabBarIcon: ProfileIcon,
-        }}
-      />
+      {TabList.map((tab, index) => (
+        <Tab.Screen
+          key={index}
+          name={tab.routerName}
+          component={tab.component}
+          options={{
+            tabBarLabel: tab.label,
+            headerShown: false,
+            tabBarIcon: tab.icon,
+          }}
+        />
+      ))}
     </Tab.Navigator>
   );
 };
