@@ -11,6 +11,7 @@ export interface CardFunction {
   description: String;
   isShowToggle: Boolean;
   isToggle: Boolean;
+  icon: any;
 }
 
 export interface SpendingLimitSuggestion {

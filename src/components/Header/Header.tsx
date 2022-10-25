@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {BackIcon, LogoIcon} from 'src/assets/icons';
 import {Colors} from 'src/common';
 
-const Header = () => {
+type HeaderProps = {
+  showBackIcon?: boolean;
+};
+const Header: React.FC<HeaderProps> = ({showBackIcon = true}) => {
   return (
     <View style={styles.container}>
-      <View>
-        <BackIcon color={'white'} />
-      </View>
+      <View>{showBackIcon && <BackIcon color={'white'} />}</View>
       <View style={{flex: 1}}></View>
       <View>
         <LogoIcon color={Colors.primary} />

@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {CardInfo} from '@models/debitCard';
 import {LogoIcon, EyeCloseIcon, EyeOpenIcon} from '@assets/icons';
 import {Colors, Styles} from '@common';
+import {Text} from '@components';
 
-interface DebitCardInfoProps {
+type DebitCardInfoProps = {
   cardInfo: CardInfo;
-}
+};
 const DebitCardInfo: React.FC<DebitCardInfoProps> = ({cardInfo}) => {
   const [showCard, setShowCard] = useState(false);
 
   return (
-    <View style={styles.cardInfoAndToggleContainer}>
+    <View style={styles.container}>
       <TouchableOpacity
         style={styles.showCardNumberToggleContainer}
         onPress={() => setShowCard(prev => !prev)}>
@@ -21,12 +22,7 @@ const DebitCardInfo: React.FC<DebitCardInfoProps> = ({cardInfo}) => {
         </Text>
       </TouchableOpacity>
       <View style={styles.cardContainer}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}>
+        <View style={styles.logoContainer}>
           <LogoIcon color={Colors.white} />
           <Text style={styles.appName}>Aspire</Text>
         </View>
@@ -50,8 +46,8 @@ const DebitCardInfo: React.FC<DebitCardInfoProps> = ({cardInfo}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#0c365a',
+    marginHorizontal: Styles.Spacing.medium,
+    marginTop: -100,
   },
   debitCardInfoContainer: {
     flex: 1,
@@ -59,12 +55,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   debitCardText: {
-    color: 'white',
+    color: Colors.white,
     fontWeight: 'bold',
     fontSize: 18,
   },
   availableBalance: {
-    color: 'white',
+    color: Colors.white,
     marginTop: 15,
   },
   balanceContainer: {
@@ -73,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   currency: {
-    color: 'white',
+    color: Colors.white,
     marginRight: 10,
   },
   functionContainer: {
@@ -82,20 +78,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 2,
   },
-  appName: {color: Colors.white, marginStart: Styles.Spacing.small},
-  clientName: {marginTop: 20, color: 'white', fontWeight: 'bold', fontSize: 16},
-  cardNum: {marginTop: 20, color: 'white'},
-  validFrom: {flexDirection: 'row', marginTop: 20, color: 'white'},
+  appName: {marginStart: Styles.Spacing.small},
+  clientName: {
+    marginTop: 20,
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  cardNum: {marginTop: 20},
+  validFrom: {flexDirection: 'row', marginTop: 20},
   validFromText: {color: 'white'},
   cvv: {
     marginStart: 20,
-    color: 'white',
-
+    color: Colors.white,
     textAlign: 'center',
   },
   visa: {
     textAlign: 'right',
-    color: 'white',
     fontSize: 14,
     fontWeight: 'bold',
   },
@@ -124,6 +122,11 @@ const styles = StyleSheet.create({
   cardInfoAndToggleContainer: {
     // marginTop: -100,
     // marginHorizontal: 20,
+  },
+  logoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });
 

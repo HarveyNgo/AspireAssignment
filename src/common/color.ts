@@ -1,10 +1,10 @@
 const colors = {
   primary: '#01D167',
-
+  secondary: '#0C365A',
   deactive: '#DDDDDD',
 
   backgroundColor: '#0C365A',
-  
+
   // navigation bar
   headerTintColor: '#1CB5B4',
 

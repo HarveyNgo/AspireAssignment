@@ -1,46 +1,31 @@
-import {Container, Header} from '@components';
-import React, {useRef} from 'react';
-import {Animated, Text, View, PanResponder, StyleSheet} from 'react-native';
+import {Colors, Styles} from '@common';
+import {Container, SlideViewWithPanResponder} from '@components';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import Balance from './components/Balance';
 import DebitCardInfo from './components/DebitCardInfo';
-import SlideView from './components/SlideView';
-import SlideViewWithPan from './components/SlideViewWithPan';
-
+import FunctionList from './components/FunctionList';
 const DebitCardScreen = () => {
   return (
-    <Container>
-      <Header />
-      {/* <Text style={styles.debitCardText}>Debit Card</Text> */}
+    <Container showBackIcon={false}>
       <Balance />
-      <View>
-        {/* <SlideViewWithPan /> */}
-        <DebitCardInfo cardInfo={undefined} />
-      </View>
+      <SlideViewWithPanResponder>
+        <View style={styles.cardContainer}>
+          <DebitCardInfo cardInfo={undefined} />
+          <FunctionList />
+        </View>
+      </SlideViewWithPanResponder>
     </Container>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  titleText: {
-    fontSize: 14,
-    lineHeight: 24,
-    fontWeight: 'bold',
-  },
-  box: {
-    height: 150,
-    width: '100%',
-    backgroundColor: 'blue',
-    borderRadius: 5,
-  },
-  debitCardText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
+  cardContainer: {
+    backgroundColor: Colors.white,
+    marginHorizontal: -Styles.Spacing.medium,
+    borderTopLeftRadius: 18,
+    borderTopRightRadius: 18,
+    marginTop: 50,
   },
 });
 

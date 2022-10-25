@@ -2,15 +2,25 @@ import {SafeAreaView, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Colors} from 'src/common';
 import Styles from '@common/styles';
+import {Header} from '@components';
 
-export interface ContainerProps {
+export type ContainerProps = {
+  showHeader?: boolean;
+  showBackIcon?: boolean;
   children?: React.ReactNode;
-}
+};
 
-const Container: React.FC<ContainerProps> = ({children}) => {
+const Container: React.FC<ContainerProps> = ({
+  showHeader = true,
+  showBackIcon = true,
+  children,
+}) => {
   return (
     <View style={styles.container}>
-      <SafeAreaView>{children}</SafeAreaView>
+      <SafeAreaView>
+        {showHeader && <Header showBackIcon={showBackIcon} />}
+        {children}
+      </SafeAreaView>
     </View>
   );
 };
@@ -18,7 +28,7 @@ const Container: React.FC<ContainerProps> = ({children}) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.backgroundColor,
-    paddingHorizontal: Styles.Spacing.normal,
+    paddingHorizontal: Styles.Spacing.medium,
   },
 });
 

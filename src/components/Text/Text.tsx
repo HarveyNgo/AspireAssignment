@@ -1,26 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {BackIcon, LogoIcon} from 'src/assets/icons';
+import {StyleProp, StyleSheet, Text as RNText, TextStyle} from 'react-native';
 import {Colors} from 'src/common';
 
-const Text = () => {
-  return <Text></Text>;
+interface TextProps {
+  color?: string;
+  style?: StyleProp<TextStyle> | undefined;
+  children?: any;
+}
+const Text: React.FC<TextProps> = ({color = Colors.white, style, children}) => {
+  return <RNText style={[{color: color}, style]}>{children}</RNText>;
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    // alignItems: 'center',
-    // height: NAV_BAR_HEIGHT,
-    // width: '100%',
-    // borderBottomWidth: 1,
-    // borderBottomColor: colors.lineDivider,
-    // padding: 5,
-  },
-  //   statusBar: {
-  //     height: STATUS_BAR_HEIGHT,
-  //     backgroundColor: colors.white,
-  //   },
-});
+const styles = StyleSheet.create({});
 
 export default Text;
