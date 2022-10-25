@@ -1,7 +1,7 @@
 const colors = {
   primary: '#01D167',
 
-  deactiva: '#DDDDDD',
+  deactive: '#DDDDDD',
 
   // navigation bar
   headerTintColor: '#1CB5B4',

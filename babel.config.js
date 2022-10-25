@@ -10,6 +10,7 @@ module.exports = {
           '@routes': './src/routes',
           '@store': './src/store',
           '@components': './src/components',
+          '@assets': ['./src/assets'],
         },
       },
     ],
