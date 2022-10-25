@@ -6,9 +6,9 @@ export const Routers = {
   CreditStack: 'CreditStack' as 'CreditStack',
   ProfileStack: 'ProfileStack' as 'ProfileStack',
 
-  Home: 'Home' as 'Home',
-  DebitCard: 'DebitCard' as 'DebitCard',
-  Payment: 'Payment' as 'Payment',
-  Credit: 'Credit' as 'Credit',
-  Profile: 'Profile' as 'Profile',
+  HomeScreen: 'HomeScreen' as 'HomeScreen',
+  DebitCardScreen: 'DebitCardScreen' as 'DebitCardScreen',
+  PaymentScreen: 'PaymentScreen' as 'PaymentScreen',
+  CreditScreen: 'CreditScreen' as 'CreditScreen',
+  ProfileScreen: 'ProfileScreen' as 'ProfileScreen',
 };

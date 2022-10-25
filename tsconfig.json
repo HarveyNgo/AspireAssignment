@@ -14,8 +14,9 @@
       "baseUrl": "./",
       "paths": {
         "@navigators": ["src/navigators"],
-        "@routes": ["src/routes"],
+        "@routes/*": ["src/routes/*"],
         "@store": ["src/store"],
+        "@components": ["src/components"],
      
       },
       

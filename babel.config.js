@@ -9,6 +9,7 @@ module.exports = {
           '@navigators': './src/navigators',
           '@routes': './src/routes',
           '@store': './src/store',
+          '@components': './src/components',
         },
       },
     ],

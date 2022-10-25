@@ -2,22 +2,25 @@ import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {Routers} from '@routes/index';
-import {HomeScreen} from '@routes/home-stack';
+import {DebitCardScreen} from '@routes/debit-card-stack';
 
 export type HomeStackParamsList = {
-  [Routers.HomeScreen]: undefined;
+  [Routers.DebitCardScreen]: undefined;
 };
 
 const Stack = createStackNavigator();
 
-const HomeNavigator = () => {
+const DebitCardNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName={Routers.HomeScreen}
+      initialRouteName={Routers.DebitCardScreen}
       screenOptions={() => ({headerShown: false})}>
-      <Stack.Screen name={Routers.HomeScreen} component={HomeScreen} />
+      <Stack.Screen
+        name={Routers.DebitCardScreen}
+        component={DebitCardScreen}
+      />
     </Stack.Navigator>
   );
 };
 
-export default HomeNavigator;
+export default DebitCardNavigator;
