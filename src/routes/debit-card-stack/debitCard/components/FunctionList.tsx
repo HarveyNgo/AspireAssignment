@@ -1,4 +1,10 @@
-import {TopupIcon} from '@assets/icons';
+import {
+  TopupIcon,
+  WeekSpendLimitIcon,
+  NewCardIcon,
+  DeactivatedCardIcon,
+  FreezeCardIcon,
+} from '@assets/icons';
 import {Styles} from '@common';
 import {Container, Header} from '@components';
 import React, {useRef} from 'react';
@@ -18,35 +24,28 @@ const data = [
     description: 'you havent set any limit on card',
     isShowToggle: true,
     isToggle: false,
-    icon: TopupIcon,
+    icon: WeekSpendLimitIcon,
   },
   {
     name: 'Freeze card',
     description: 'Your debit card is currently active',
     isShowToggle: true,
     isToggle: false,
-    icon: TopupIcon,
-  },
-  {
-    name: 'Freeze Card',
-    description: 'your debit card is currently active',
-    isShowToggle: true,
-    isToggle: false,
-    icon: TopupIcon,
+    icon: FreezeCardIcon,
   },
   {
     name: 'Get a new card',
     description: 'this deactive your current debit card',
     isShowToggle: false,
     isToggle: false,
-    icon: TopupIcon,
+    icon: NewCardIcon,
   },
   {
     name: 'Deactivated cards',
     description: 'Your previously deactivated cards',
     isShowToggle: false,
     isToggle: false,
-    icon: TopupIcon,
+    icon: DeactivatedCardIcon,
   },
 ];
 const FunctionList = () => {
