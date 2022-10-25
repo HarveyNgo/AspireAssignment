@@ -11,4 +11,6 @@ export const Routers = {
   PaymentScreen: 'PaymentScreen' as 'PaymentScreen',
   CreditScreen: 'CreditScreen' as 'CreditScreen',
   ProfileScreen: 'ProfileScreen' as 'ProfileScreen',
+
+  SpendingLimitScreen: 'SpendingLimitScreen' as 'SpendingLimitScreen',
 };

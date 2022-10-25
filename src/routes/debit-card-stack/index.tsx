@@ -1,3 +1,3 @@
 import DebitCardScreen from './debitCard';
-
-export {DebitCardScreen};
+import SpendingLimitScreen from './spendingLimit';
+export {DebitCardScreen, SpendingLimitScreen};

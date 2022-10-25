@@ -1,5 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {BackIcon, LogoIcon} from 'src/assets/icons';
 import {Colors} from 'src/common';
 
@@ -7,9 +8,19 @@ type HeaderProps = {
   showBackIcon?: boolean;
 };
 const Header: React.FC<HeaderProps> = ({showBackIcon = true}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <View>{showBackIcon && <BackIcon color={'white'} />}</View>
+      <View>
+        {showBackIcon && (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <BackIcon color={'white'} />
+          </TouchableOpacity>
+        )}
+      </View>
       <View style={{flex: 1}}></View>
       <View>
         <LogoIcon color={Colors.primary} />

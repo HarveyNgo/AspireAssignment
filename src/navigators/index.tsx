@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Routers} from '@routes/index';
 import RootNavigator from './root-navigator';
+import {SpendingLimitScreen} from '@routes/debit-card-stack';
 
 export type RootNavigatorParamsList = {
   [Routers.RootNavigation]: undefined;
@@ -18,6 +19,15 @@ const AppNavigator = () => {
           name={Routers.RootNavigation}
           component={RootNavigator}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name={Routers.SpendingLimitScreen}
+          component={SpendingLimitScreen}
+          options={{
+            headerTitle: '',
+            headerBackTitleVisible: false,
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

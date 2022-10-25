@@ -62,11 +62,12 @@ const RootNavigator = () => {
         headerStyle: {},
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.deactive,
-        tabBarButtonColor: Colors.primary,
-        tabBarSelectedButtonColor: Colors.deactive,
+        // tabBarButtonColor: Colors.primary,
+        // tabBarSelectedButtonColor: Colors.deactive,
       }}
       initialRouteName={Routers.DebitCardStack}
-      tabBar={(props: JSX.IntrinsicAttributes) => <BottomTabBar {...props} />}>
+      // tabBar={(props: JSX.IntrinsicAttributes) => <BottomTabBar {...props} />}
+    >
       {TabList.map((tab, index) => (
         <Tab.Screen
           key={index}

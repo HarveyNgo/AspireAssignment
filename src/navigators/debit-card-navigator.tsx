@@ -2,11 +2,9 @@ import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {Routers} from '@routes/index';
-import {DebitCardScreen} from '@routes/debit-card-stack';
+import {DebitCardScreen, SpendingLimitScreen} from '@routes/debit-card-stack';
 
-export type HomeStackParamsList = {
-  [Routers.DebitCardScreen]: undefined;
-};
+export type DebitCardStackParamsList = {};
 
 const Stack = createStackNavigator();
 

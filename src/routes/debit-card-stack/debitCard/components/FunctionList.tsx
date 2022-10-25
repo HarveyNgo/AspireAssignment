@@ -7,6 +7,8 @@ import {
 } from '@assets/icons';
 import {Styles} from '@common';
 import {Container, Header} from '@components';
+import {useNavigation} from '@react-navigation/native';
+import {Routers} from '@routes/index';
 import React, {useRef} from 'react';
 import {Animated, Text, View, PanResponder, StyleSheet} from 'react-native';
 import FunctionRow from './FunctionRow';
@@ -48,11 +50,29 @@ const data = [
     icon: DeactivatedCardIcon,
   },
 ];
-const FunctionList = () => {
+
+type FunctionListProps = {
+  goToSpendingLimit: () => void;
+};
+const FunctionList: React.FC<FunctionListProps> = ({goToSpendingLimit}) => {
   return (
     <View style={styles.functionRowContainer}>
       {data.map((item, index) => {
-        return <FunctionRow key={index} item={item} />;
+        return (
+          <FunctionRow
+            key={index}
+            item={item}
+            onSwitchPress={value =>
+              // navigation.navigate(Routers.SpendingLimitScreen)
+              // navigation.navigate(Routers.DebitCardStack, {
+              //   screen: Routers.SpendingLimitScreen,
+              //   params: {},
+              // })
+              goToSpendingLimit()
+            }
+            onRowPress={() => goToSpendingLimit()}
+          />
+        );
       })}
       {/* <FunctionRow item={TopupAccount} />
       <FunctionRow
