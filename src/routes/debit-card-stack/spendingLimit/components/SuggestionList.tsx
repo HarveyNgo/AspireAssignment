@@ -1,8 +1,6 @@
 import {SpendingLimitSuggestion} from '@models/debitCard';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-// import {connect} from 'react-redux';
-
 import SuggestionItem from './SuggestionItem';
 
 const data = [
@@ -20,22 +18,10 @@ const data = [
   },
 ];
 type SuggestionListProps = {
-  //   item: SpendingLimitSuggestion;
-  //   onPress?: Function;
-  // spendLimitList: Array<SpendingLimitSuggestion>;
-  // getSpendLimitList: any;
   onPress?: (item: SpendingLimitSuggestion) => void;
 };
 
-const SuggestionList: React.FC<SuggestionListProps> = ({
-  // spendLimitList,
-  // getSpendLimitList,
-  onPress,
-}) => {
-  // useEffect(() => {
-  //   getSpendLimitList();
-  // }, []);
-
+const SuggestionList: React.FC<SuggestionListProps> = ({onPress}) => {
   return (
     <View style={styles.container}>
       {data.map(item => {
@@ -48,10 +34,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // backgroundColor: '#90ee90',
     justifyContent: 'space-around',
-    // marginVertical: 10,
-    // marginHorizontal: 20,
   },
   name: {
     color: '#0c365a',

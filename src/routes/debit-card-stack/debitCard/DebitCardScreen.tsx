@@ -13,6 +13,7 @@ import Balance from './components/Balance';
 import DebitCardInfo from './components/DebitCardInfo';
 import FunctionList from './components/FunctionList';
 import SpendLimitView from './components/SpendLimitView';
+
 const DebitCardScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -68,7 +69,6 @@ const DebitCardScreen = () => {
               if (item.id == FUNCTION_ID.WEEK_SPEND_LIMIT) {
                 if (item.isToggle) {
                   dispatch(DebitCardActions.setIsSpendLimit(false));
-                  
                 } else {
                   navigation.navigate(Routers.SpendingLimitScreen);
                 }

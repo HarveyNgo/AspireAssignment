@@ -1,30 +1,30 @@
+import {Colors} from '@common';
 import {CurrencyCard, Text} from '@components';
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import {FormikErrors, FormikTouched} from 'formik';
 import {IInputValidation} from '@models/debitCard';
-import {Colors, Styles} from '@common';
-import {err} from 'react-native-svg/lib/typescript/xml';
+import {FormikErrors, FormikTouched, getIn} from 'formik';
+import React, {useEffect} from 'react';
+import {StyleSheet, TextInput, View} from 'react-native';
 
 type InputViewProps = {
   handleChange: Function;
   values: IInputValidation;
   errors: FormikErrors<IInputValidation>;
   touched: FormikTouched<IInputValidation>;
-  spendLimitAmount: number;
+  onChangeValue: (value: string) => void;
 };
 const InputView: React.FC<InputViewProps> = ({
   handleChange,
   values,
   errors,
   touched,
-  spendLimitAmount,
+  onChangeValue,
 }) => {
-  // const [aa, setAA] = useState(false);
-  // useEffect(() => {
-  //   setAA(true);
-  //   console.log('hung spendLimitAmount spendLimitAmount:', spendLimitAmount);
-  // }, [spendLimitAmount]);
+  const fieldValue = getIn(values, 'spendLimitAmount');
+
+  useEffect(() => {
+    onChangeValue(fieldValue);
+  }, [fieldValue]);
+
   return (
     <View>
       <View style={styles.inputContainer}>

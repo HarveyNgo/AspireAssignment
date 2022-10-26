@@ -1,7 +1,7 @@
-import * as React from 'react';
-import {StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
-import {CardFunction} from '@models/debitCard';
 import {Colors, Styles} from '@common';
+import {CardFunction} from '@models/debitCard';
+import * as React from 'react';
+import {StyleSheet, Switch, Text, View} from 'react-native';
 
 type FunctionRowProps = {
   item: CardFunction;

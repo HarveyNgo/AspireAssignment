@@ -6,7 +6,7 @@ import {
   ISaveSpendLimitPayLoad,
   ISetIsSpendLimitPayLoad,
 } from '@models/actions/debitCard';
-import {takeLatest, put, all, select, delay} from 'redux-saga/effects';
+import {put, takeLatest} from 'redux-saga/effects';
 import DebitCardService from 'src/services/DebitCardService';
 import DebitCardActions from './debitCard.actions';
 import DebitCardTypes from './debitCard.types';

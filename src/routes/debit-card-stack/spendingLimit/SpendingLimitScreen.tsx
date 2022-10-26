@@ -1,26 +1,21 @@
-import {WeekLimitIcon} from '@assets/icons';
-import {Colors, Styles} from '@common';
-import {Container, CurrencyCard, Text, Title} from '@components';
+import {Colors} from '@common';
+import {Container, Text, Title} from '@components';
 import {useNavigation} from '@react-navigation/native';
+import {Formik} from 'formik';
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {DebitCardActions} from 'src/store/actions';
+import * as yup from 'yup';
+import InputHeader from './components/InputHeader';
+import InputView from './components/InputView';
 import SaveButton from './components/SaveButton';
 import SpendLimitList from './components/SuggestionList';
-import {Formik} from 'formik';
-import * as yup from 'yup';
-import InputView from './components/InputView';
-import InputHeader from './components/InputHeader';
 
 const SpendingLimitScreen = () => {
   const [spendLimitAmount, setSpendLimitAmount] = useState(0);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-
-  const onChangeText = (value: string) => {
-    setSpendLimitAmount(Number(value));
-  };
 
   const onSubmit = (amount: number) => {
     dispatch(
@@ -42,7 +37,6 @@ const SpendingLimitScreen = () => {
           }}
           enableReinitialize={true}
           onSubmit={values => {
-            console.log('hung onSubmit values:', values);
             onSubmit(values.spendLimitAmount);
           }}
           validationSchema={yup.object().shape({
@@ -60,7 +54,7 @@ const SpendingLimitScreen = () => {
                   values={values}
                   errors={errors}
                   touched={touched}
-                  spendLimitAmount={spendLimitAmount}
+                  onChangeValue={value => setSpendLimitAmount(Number(value))}
                 />
                 <View style={styles.seperator} />
                 <Text style={styles.explaination}>
@@ -73,7 +67,10 @@ const SpendingLimitScreen = () => {
                 />
               </View>
               <View style={styles.saveButtonContainer}>
-                <SaveButton haveSpendAmount={false} onPress={handleSubmit} />
+                <SaveButton
+                  haveSpendAmount={spendLimitAmount > 0}
+                  onPress={handleSubmit}
+                />
               </View>
             </>
           )}
@@ -96,9 +93,6 @@ const styles = StyleSheet.create({
 
   saveButtonContainer: {
     alignSelf: 'center',
-    // position: 'absolute',
-    // bottom: 0,
-    // marginBottom: 10,
     width: '60%',
   },
   seperator: {

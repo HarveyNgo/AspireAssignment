@@ -1,19 +1,16 @@
 import {
-  TopupIcon,
-  WeekSpendLimitIcon,
-  NewCardIcon,
   DeactivatedCardIcon,
   FreezeCardIcon,
+  NewCardIcon,
+  TopupIcon,
+  WeekSpendLimitIcon,
 } from '@assets/icons';
 import {Styles} from '@common';
-import {Container, Header} from '@components';
-import {useNavigation} from '@react-navigation/native';
-import {Routers} from '@routes/index';
-import React, {useRef} from 'react';
-import {Animated, Text, View, PanResponder, StyleSheet} from 'react-native';
-import FunctionRow from './FunctionRow';
-import {FUNCTION_ID} from 'src/constants/debitCard';
 import {CardFunction} from '@models/debitCard';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {FUNCTION_ID} from 'src/constants/debitCard';
+import FunctionRow from './FunctionRow';
 
 type FunctionListProps = {
   onSwitchPress: (item: CardFunction) => void;

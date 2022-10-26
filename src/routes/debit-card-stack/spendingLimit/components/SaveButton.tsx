@@ -1,13 +1,7 @@
 import {Colors} from '@common';
 import {Text} from '@components';
-import React, {useEffect} from 'react';
-import {
-  View,
-  ViewStyle,
-  StyleSheet,
-  Switch,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
 type SaveButtonProps = {
   haveSpendAmount: Boolean;
@@ -16,7 +10,12 @@ type SaveButtonProps = {
 
 const SaveButton: React.FC<SaveButtonProps> = ({haveSpendAmount, onPress}) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        {backgroundColor: haveSpendAmount ? Colors.primary : Colors.deactive},
+      ]}
+      onPress={onPress}>
       <Text style={styles.save}>Save</Text>
     </TouchableOpacity>
   );

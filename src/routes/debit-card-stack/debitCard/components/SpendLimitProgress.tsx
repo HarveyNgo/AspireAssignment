@@ -1,7 +1,6 @@
 import {Colors} from '@common';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {connect} from 'react-redux';
 
 interface IProps {
   currentSpend: number;
