@@ -4,6 +4,7 @@ const colors = {
   deactive: '#DDDDDD',
 
   backgroundColor: '#0C365A',
+  gray: '#22222266',
 
   // navigation bar
   headerTintColor: '#1CB5B4',
@@ -13,7 +14,7 @@ const colors = {
   tabbarTint: '#008FD5',
   tabbarColor: '#828B8F',
   black: '#000000',
-  gray: '#E3E3E3',
+
   gray2: '#C9C9C9',
   white: '#FFFF',
   gray3: '#222222',

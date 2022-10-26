@@ -6,3 +6,4 @@ export {default as FreezeCardIcon} from './FreezeCardIcon';
 export {default as DeactivatedCardIcon} from './DeactivatedCardIcon';
 export {default as NewCardIcon} from './NewCardIcon';
 export {default as WeekLimitIcon} from './WeekLimitIcon';
+export {default as VisaLogoIcon} from './VisaLogoIcon';

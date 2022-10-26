@@ -9,6 +9,7 @@ import {
   DeactivatedCardIcon,
   FreezeCardIcon,
   WeekLimitIcon,
+  VisaLogoIcon,
 } from './debitCard';
 
 export {
@@ -23,4 +24,5 @@ export {
   DeactivatedCardIcon,
   FreezeCardIcon,
   WeekLimitIcon,
+  VisaLogoIcon,
 };

@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
   },
   weeklyTextContainer: {
     flexDirection: 'row',
-    marginVertical: Styles.Spacing.medium,
+    marginBottom: Styles.Spacing.medium,
+    marginTop: 32,
   },
 });
 

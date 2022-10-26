@@ -1,22 +1,19 @@
 import React from 'react';
-import {
-  createBottomTabNavigator,
-  BottomTabBar,
-} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Routers} from '@routes/index';
 import HomeNavigator from './home-navigator';
 import DebitCardNavigator from './debit-card-navigator';
 import PaymentNavigator from './payment-navigator';
 import CreditNavigator from './credit-navigator';
 import ProfileNavigator from './profile-navigator';
-import {Colors} from 'src/common';
+import {Colors} from '@common';
 import {
   HomeTabIcon,
   PaymentTabIcon,
   CreditTabIcon,
   ProfileTabIcon,
   DebitCardIcon,
-} from 'src/assets/icons/tabbar/index';
+} from '@assets/icons/tabbar/index';
 
 export type AuthenticatedParamsList = {};
 

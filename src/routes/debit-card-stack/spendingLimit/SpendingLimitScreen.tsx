@@ -1,11 +1,11 @@
-import {Colors} from '@common';
+import {Colors, Styles} from '@common';
 import {Container, Text, Title} from '@components';
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {DebitCardActions} from 'src/store/actions';
+import {DebitCardActions} from '@store/actions';
 import * as yup from 'yup';
 import InputHeader from './components/InputHeader';
 import InputView from './components/InputView';
@@ -29,7 +29,10 @@ const SpendingLimitScreen = () => {
   };
   return (
     <Container>
-      <Title title={'Spending Limit'} />
+      <Title
+        title={'Spending Limit'}
+        style={{marginTop: Styles.Spacing.large}}
+      />
       <View style={styles.functionContainer}>
         <Formik
           initialValues={{
@@ -47,7 +50,7 @@ const SpendingLimitScreen = () => {
           })}>
           {({handleChange, handleSubmit, values, errors, touched}) => (
             <>
-              <View style={{height: '85%'}}>
+              <View style={{height: '80%'}}>
                 <InputHeader />
                 <InputView
                   handleChange={handleChange}
@@ -87,13 +90,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     marginTop: 50,
     paddingHorizontal: 20,
-    marginHorizontal: -18,
+    marginHorizontal: -Styles.Spacing.xlarge,
     height: '90%',
   },
 
   saveButtonContainer: {
     alignSelf: 'center',
-    width: '60%',
+    width: '70%',
   },
   seperator: {
     width: '100%',
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.deactive,
     marginBottom: 10,
   },
-  explaination: {color: 'grey', fontSize: 11, marginBottom: 20},
+  explaination: {color: Colors.gray, fontSize: 11, marginBottom: 20},
 });
 
 export default SpendingLimitScreen;

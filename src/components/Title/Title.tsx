@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleProp, StyleSheet, Text as RNText, TextStyle} from 'react-native';
-import {Colors, Styles} from 'src/common';
+import {Colors, Styles} from '@common';
 import Text from '../Text';
 
 interface TitleProps {

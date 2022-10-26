@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleProp, StyleSheet, Text as RNText, TextStyle} from 'react-native';
-import {Colors} from 'src/common';
+import {Colors} from '@common';
 
 interface TextProps {
   color?: string;

@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {BackIcon, LogoIcon} from 'src/assets/icons';
-import {Colors} from 'src/common';
+import {BackIcon, LogoIcon} from '@assets/icons';
+import {Colors} from '@common';
 
 type HeaderProps = {
   showBackIcon?: boolean;

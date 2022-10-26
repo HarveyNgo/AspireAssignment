@@ -6,7 +6,7 @@ import {
   TextStyle,
   View,
 } from 'react-native';
-import {Colors, Styles} from 'src/common';
+import {Colors, Styles} from '@common';
 import Text from '../Text';
 
 interface CurrencyCardProps {
@@ -15,20 +15,21 @@ interface CurrencyCardProps {
 const CurrencyCard: React.FC<CurrencyCardProps> = ({currency = 'S'}) => {
   return (
     <View style={styles.container}>
-      <Text>{currency}$</Text>
+      <Text style={styles.currency}>{currency}$</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: Styles.Spacing.normal,
+    paddingHorizontal: Styles.Spacing.medium,
     backgroundColor: Colors.primary,
-    borderRadius: 8,
-    paddingVertical: 4,
+    borderRadius: 5,
+    paddingVertical: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  currency: {fontWeight: 'bold'},
 });
 
 export default CurrencyCard;

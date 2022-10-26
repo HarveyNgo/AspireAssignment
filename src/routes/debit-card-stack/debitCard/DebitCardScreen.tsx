@@ -6,9 +6,9 @@ import {Routers} from '@routes/index';
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
-import {FUNCTION_ID} from 'src/constants/debitCard';
-import {DebitCardActions} from 'src/store/actions';
-import {DebitCardSelectors} from 'src/store/selectors';
+import {FUNCTION_ID} from '@constants/debitCard';
+import {DebitCardActions} from '@store/actions';
+import {DebitCardSelectors} from '@store/selectors';
 import Balance from './components/Balance';
 import DebitCardInfo from './components/DebitCardInfo';
 import FunctionList from './components/FunctionList';
@@ -32,8 +32,6 @@ const DebitCardScreen = () => {
     DebitCardSelectors.getCurrentSpend,
     shallowEqual,
   );
-
-  console.log('hung isSpendLimit:', isSpendLimit);
 
   useEffect(() => {
     dispatch(DebitCardActions.getBalance());
@@ -84,10 +82,11 @@ const DebitCardScreen = () => {
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: Colors.white,
-    marginHorizontal: -Styles.Spacing.medium,
+    marginHorizontal: -Styles.Spacing.xlarge,
     borderTopLeftRadius: 18,
     borderTopRightRadius: 18,
     marginTop: 50,
+    height: '100%',
   },
 });
 

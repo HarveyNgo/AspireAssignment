@@ -1,6 +1,6 @@
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {Colors} from 'src/common';
+import {Colors} from '@common';
 import Styles from '@common/styles';
 import {Header} from '@components';
 
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     backgroundColor: Colors.backgroundColor,
-    paddingHorizontal: Styles.Spacing.medium,
+    paddingHorizontal: Styles.Spacing.xlarge,
   },
 });
 

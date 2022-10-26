@@ -9,7 +9,7 @@ import {Styles} from '@common';
 import {CardFunction} from '@models/debitCard';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {FUNCTION_ID} from 'src/constants/debitCard';
+import {FUNCTION_ID} from '@constants/debitCard';
 import FunctionRow from './FunctionRow';
 
 type FunctionListProps = {

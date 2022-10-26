@@ -63,6 +63,7 @@ const FontSize = {
   medium: 16,
   big: 18,
   large: 20,
+  xlarge: 24,
 };
 const IconSize = {
   TextInput: 25,
@@ -76,6 +77,7 @@ const Spacing = {
   normal: 10,
   medium: 14,
   large: 18,
+  xlarge: 24,
 };
 
 const styles = {

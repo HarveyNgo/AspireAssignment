@@ -1,5 +1,5 @@
 import {Colors, Styles} from '@common';
-import {Text} from '@components';
+import {Text, Title} from '@components';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {CurrencyCard} from '@components';
@@ -11,7 +11,7 @@ type BalanceProps = {
 const Balance: React.FC<BalanceProps> = ({balance}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.debitCardText}>Debit Card</Text>
+      <Title title="Debit Card" />
       <Text style={styles.availableBalance}>Available balance</Text>
       <View style={styles.balanceContainer}>
         <CurrencyCard />
@@ -25,13 +25,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
   },
-  debitCardText: {
-    fontWeight: 'bold',
-    fontSize: 24,
-  },
   availableBalance: {
-    marginTop: 24,
-    fontSize: 14,
+    marginTop: Styles.Spacing.xlarge,
+    fontSize: Styles.FontSize.small,
   },
   balanceContainer: {
     flexDirection: 'row',
