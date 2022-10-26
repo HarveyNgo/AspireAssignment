@@ -1,3 +1,3 @@
-import debitCardActions from './debitCard/debitCard.actions';
+import DebitCardActions from './debitCard/debitCard.actions';
 
-export {debitCardActions};
+export {DebitCardActions};

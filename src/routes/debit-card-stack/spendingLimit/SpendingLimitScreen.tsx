@@ -8,6 +8,9 @@ import SpendLimitList from './components/SuggestionList';
 
 const SpendingLimitScreen = () => {
   const [spendLimitAmount, setSpendLimitAmount] = useState(0);
+  const onChangeText = (value: string) => {
+    setSpendLimitAmount(Number(value));
+  };
   return (
     <Container>
       <Title title={'Spending Limit'} />
@@ -22,7 +25,7 @@ const SpendingLimitScreen = () => {
           <View style={styles.inputContainer}>
             <CurrencyCard />
             <TextInput
-              // onChangeText={this.onInputChange}
+              onChangeText={onChangeText}
               value={String(spendLimitAmount)}
               style={styles.input}
             />

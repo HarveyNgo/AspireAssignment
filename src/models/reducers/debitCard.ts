@@ -5,4 +5,5 @@ export interface IDebitCardState {
   spendLimitList: [];
   spendLimit: number;
   isSpendLimit: boolean;
+  balance: number;
 }

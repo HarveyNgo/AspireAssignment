@@ -24,6 +24,9 @@
         "@common/*": ["src/common/*"],
         "@utils": ["src/utils"],
         "@utils/*": ["src/utils/*"],
+        "@services": ["src/services"],
+        "@services/*": ["src/services/*"],
+        
      
       },
       

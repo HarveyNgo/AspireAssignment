@@ -3,15 +3,19 @@ import {Text} from '@components';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {CurrencyCard} from '@components';
+import {formatAmount} from '@utils/format';
 
-const Balance = () => {
+type BalanceProps = {
+  balance: number;
+};
+const Balance: React.FC<BalanceProps> = ({balance}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.debitCardText}>Debit Card</Text>
       <Text style={styles.availableBalance}>Available balance</Text>
       <View style={styles.balanceContainer}>
         <CurrencyCard />
-        <Text style={styles.amount}>3000</Text>
+        <Text style={styles.amount}>{formatAmount(balance)}</Text>
       </View>
     </View>
   );

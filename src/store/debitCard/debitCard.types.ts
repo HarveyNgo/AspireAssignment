@@ -1,5 +1,9 @@
 enum DebitCardTypes {
   GET_BALANCE = 'GET_BALANCE',
+  GET_BALANCE_SUCCESS = 'GET_BALANCE_SUCCESS',
+
+  GET_CARD_INFO = 'GET_CARD_INFO',
+  GET_CARD_INFO_SUCCESS = 'GET_CARD_INFO_SUCCESS',
 }
 
 export default DebitCardTypes;
