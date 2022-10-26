@@ -17,7 +17,7 @@ const Container: React.FC<ContainerProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <SafeAreaView>
+      <SafeAreaView style={{}}>
         {showHeader && <Header showBackIcon={showBackIcon} />}
         {children}
       </SafeAreaView>
@@ -27,6 +27,7 @@ const Container: React.FC<ContainerProps> = ({
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'column',
     backgroundColor: Colors.backgroundColor,
     paddingHorizontal: Styles.Spacing.medium,
   },

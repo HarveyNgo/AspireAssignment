@@ -1,18 +1,24 @@
+import {Action} from '@models/actions/common';
+import {IGetBalancePayLoad} from '@models/actions/debitCard';
 import {takeLatest, put, all, select, delay} from 'redux-saga/effects';
+import DebitCardTypes from './debitCard.types';
 
-import DebitCardActions, {DebitCardTypes} from './debitCard.actions';
-
-function* startupRequest(): any {
-  yield delay(500);
+export function* getBalance(action: Action<IGetBalancePayLoad>): any {
   try {
-    const user = yield select((state: any) => state?.auth?.user || {});
-    yield put(DebitCardActions.startupSuccess());
-  } catch (error) {
-    //
-    yield put(DebitCardActions.startupSuccess());
-  }
+    const response: IResponse = yield call(
+      scpApi.getSupplierHistories,
+      authToken,
+      action.payload?.supplier.id || '',
+      {
+        companyId: companyId,
+        resourceType: 'supplier',
+        limit: action.payload?.perPage,
+        page: action.payload?.page,
+      },
+    );
+  } catch (error: Error | any) {}
 }
 
 export default function* watcherSaga() {
-  yield takeLatest(DebitCardTypes.STARTUP_REQUEST, startupRequest);
+  yield takeLatest(DebitCardTypes.GET_BALANCE, getBalance);
 }

@@ -1,48 +1,37 @@
+import {Colors} from '@common';
+import {Text} from '@components';
 import React, {useEffect} from 'react';
 import {
   View,
-  Text,
   ViewStyle,
   StyleSheet,
   Switch,
   TouchableOpacity,
 } from 'react-native';
-import {connect} from 'react-redux';
-import styled from 'styled-components';
 
-interface IProps {
+type SaveButtonProps = {
   haveSpendAmount: Boolean;
-  onPress: Function;
-}
+  onPress: () => void;
+};
 
-const SaveContainer = styled(TouchableOpacity)`
-  border-radius: 30px;
-  background-color: ${({haveSpendAmount}) =>
-    haveSpendAmount ? '#01d167' : 'gray'};
-  align-items: center;
-  padding: 20px;
-`;
-
-const SaveButton: React.FC<IProps> = ({haveSpendAmount, onPress}) => {
+const SaveButton: React.FC<SaveButtonProps> = ({haveSpendAmount, onPress}) => {
   return (
-    <SaveContainer haveSpendAmount={haveSpendAmount} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Text style={styles.save}>Save</Text>
-    </SaveContainer>
+    </TouchableOpacity>
   );
 };
 
-type Style = {
-  container: ViewStyle;
-};
-
-const styles = StyleSheet.create<Style>({
+const styles = StyleSheet.create({
+  container: {
+    borderRadius: 30,
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: Colors.primary,
+  },
   save: {
-    color: 'white',
+    fontWeight: 'bold',
   },
 });
 
-const mapStateToProps = (state: State) => ({});
-
-const mapDiaptchToProps = {};
-
-export default connect(mapStateToProps, mapDiaptchToProps)(SaveButton);
+export default SaveButton;

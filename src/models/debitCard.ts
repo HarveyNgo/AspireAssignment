@@ -15,6 +15,6 @@ export interface CardFunction {
 }
 
 export interface SpendingLimitSuggestion {
-  id: Number;
-  number: Number;
+  id: number;
+  number: number;
 }

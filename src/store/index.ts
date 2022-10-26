@@ -23,7 +23,6 @@ const persistedReducer = persistReducer(
 // let store: any = null;
 const store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
 
-console.log('hung sdjkfkldskfl;kksd; store:', store);
 // rehydration(store);
 sagaMiddleware.run(rootSaga);
 export default store;

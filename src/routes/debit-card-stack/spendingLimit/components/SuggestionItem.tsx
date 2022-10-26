@@ -1,52 +1,40 @@
+import {Colors} from '@common';
+import {SpendingLimitSuggestion} from '@models/debitCard';
 import * as React from 'react';
-import {
-  View,
-  Text,
-  ViewStyle,
-  StyleSheet,
-  Switch,
-  TouchableOpacity,
-} from 'react-native';
-import {SpendingLimitSuggestion} from '../../../models/debitCard';
-import styled from 'styled-components';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {formatAmount} from '@utils/format';
 
-interface IProps {
+type SuggestionItemProps = {
   item: SpendingLimitSuggestion;
-  onPress?: Function;
-}
+  onPress?: (item: SpendingLimitSuggestion) => void;
+};
 
-const SuggestionItem: React.FC<IProps> = ({item, onPress}) => {
+const SuggestionItem: React.FC<SuggestionItemProps> = ({item, onPress}) => {
   return (
     <TouchableOpacity
-      key={item.id}
       style={styles.container}
-      onPress={() => onPress(item)}>
-      <Text style={styles.name}>$$ </Text>
-      <Text style={styles.description}>{item.number}</Text>
+      onPress={() => onPress && onPress(item)}>
+      <Text style={styles.name}>S$ </Text>
+      <Text style={styles.description}>
+        {String(formatAmount(item.number))}
+      </Text>
     </TouchableOpacity>
   );
 };
 
-type Style = {
-  container: ViewStyle;
-};
-
-const styles = StyleSheet.create<Style>({
+const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#90ee90',
+    backgroundColor: '#14d16712',
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
-    // justifyContent: 'space-between',
-    // marginVertical: 10,
-    // marginHorizontal: 20,
   },
   name: {
-    color: '#01d167',
+    color: Colors.primary,
   },
   description: {
-    color: '#01d167',
+    color: Colors.primary,
   },
 });
 

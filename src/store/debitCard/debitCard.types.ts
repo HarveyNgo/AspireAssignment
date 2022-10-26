@@ -1,14 +1,5 @@
-import {createReducer, createActions} from 'reduxsauce';
+enum DebitCardTypes {
+  GET_BALANCE = 'GET_BALANCE',
+}
 
-/* ------------- Types and Action Creators ------------- */
-
-const {Types, Creators} = createActions({
-  startupRequest: null,
-  startupSuccess: null,
-
-  showIndicator: null,
-  hideIndicator: null,
-});
-
-export const DebitCardTypes = Types;
-export default Creators;
+export default DebitCardTypes;

@@ -1,14 +1,10 @@
-import {createReducer, createActions} from 'reduxsauce';
+import {Action, ICallback} from '@models/actions/common';
+import {IGetBalancePayLoad} from '@models/actions/debitCard';
+import DebitCardTypes from './debitCard.types';
 
-/* ------------- Types and Action Creators ------------- */
-
-const {Types, Creators} = createActions({
-  startupRequest: null,
-  startupSuccess: null,
-
-  showIndicator: null,
-  hideIndicator: null,
+const getBalance = (): Action<IGetBalancePayLoad> => ({
+  type: DebitCardTypes.GET_BALANCE,
+  payload: {},
 });
 
-export const DebitCardTypes = Types;
-export default Creators;
+export default {getBalance};

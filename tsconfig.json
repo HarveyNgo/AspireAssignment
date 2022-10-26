@@ -22,6 +22,8 @@
         "@models/*": ["src/models/*"],
         "@common": ["src/common"],
         "@common/*": ["src/common/*"],
+        "@utils": ["src/utils"],
+        "@utils/*": ["src/utils/*"],
      
       },
       

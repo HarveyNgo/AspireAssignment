@@ -1,48 +1,52 @@
+import {WeekLimitIcon} from '@assets/icons';
 import {Colors, Styles} from '@common';
-import {Container, Text} from '@components';
-import React from 'react';
+import {Container, CurrencyCard, Text, Title} from '@components';
+import React, {useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
+import SaveButton from './components/SaveButton';
+import SpendLimitList from './components/SuggestionList';
 
 const SpendingLimitScreen = () => {
+  const [spendLimitAmount, setSpendLimitAmount] = useState(0);
   return (
     <Container>
-      <View style={styles.debitCardInfoContainer}>
-        <Text style={styles.debitCardText}>Spending Limit</Text>
-      </View>
+      <Title title={'Spending Limit'} />
       <View style={styles.functionContainer}>
-        <Text style={styles.setWeeklyText}>
-          Set the weekly debit card spending limit
-        </Text>
-        <View style={styles.inputContainer}>
-          <Text>$$</Text>
-          <TextInput
-            // onChangeText={this.onInputChange}
-            // value={this.state.spendLimit}
-            style={styles.input}
+        <View style={{height: '85%'}}>
+          <View style={styles.weeklyTextContainer}>
+            <WeekLimitIcon color={Colors.secondary} />
+            <Text style={styles.setWeeklyText}>
+              Set the weekly debit card spending limit
+            </Text>
+          </View>
+          <View style={styles.inputContainer}>
+            <CurrencyCard />
+            <TextInput
+              // onChangeText={this.onInputChange}
+              value={String(spendLimitAmount)}
+              style={styles.input}
+            />
+          </View>
+          <View style={styles.seperator} />
+          <Text style={styles.explaination}>
+            Here weekly means the last 7 days - not the calendar week
+          </Text>
+          <SpendLimitList
+            onPress={spendLimitItem => {
+              setSpendLimitAmount(spendLimitItem.number);
+            }}
           />
         </View>
-        <View style={styles.seperator} />
-        <Text style={styles.explaination}>
-          Here weekly means the last 7 days - not the calendar week
-        </Text>
-        {/* <SpendLimitList
-          onPress={spendLimitItem =>
-            this.setState({
-              spendLimit: formatNumber(spendLimitItem.number),
-            })
-          }
-        /> */}
-
         <View style={styles.saveButtonContainer}>
-          {/* <SaveButton
-            haveSpendAmount={this.state.spendLimit !== '0'}
+          <SaveButton
+            haveSpendAmount={false}
             onPress={() => {
-              const spendLimitAmount = formatNumberNoCommas(
-                this.state.spendLimit,
-              );
-              this.props.saveSpendLimit(spendLimitAmount);
+              // const spendLimitAmount = formatNumberNoCommas(
+              //   this.state.spendLimit,
+              // );
+              // this.props.saveSpendLimit(spendLimitAmount);
             }}
-          /> */}
+          />
         </View>
       </View>
     </Container>
@@ -57,12 +61,7 @@ const styles = StyleSheet.create({
   subContainer: {
     flex: 1,
   },
-  debitCardInfoContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    marginHorizontal: 10,
-    marginVertical: 20,
-  },
+
   debitCardText: {
     color: 'white',
     fontWeight: 'bold',
@@ -84,9 +83,11 @@ const styles = StyleSheet.create({
   functionContainer: {
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    backgroundColor: 'white',
-    flex: 3,
+    backgroundColor: Colors.white,
+    marginTop: 50,
     paddingHorizontal: 20,
+    marginHorizontal: -18,
+    height: '90%',
   },
   input: {
     fontSize: 15,
@@ -99,21 +100,30 @@ const styles = StyleSheet.create({
   },
   saveButtonContainer: {
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: 0,
-    marginBottom: 10,
+    // position: 'absolute',
+    // bottom: 0,
+    // marginBottom: 10,
     width: '60%',
   },
   inputContainer: {flexDirection: 'row', marginTop: 10, alignItems: 'center'},
   seperator: {
     width: '100%',
     borderStyle: 'solid',
-    borderWidth: 0.5,
-    borderColor: '#D1D7D8',
+    borderWidth: 1,
+    borderColor: Colors.deactive,
+    marginTop: 10,
     marginBottom: 10,
   },
   explaination: {color: 'grey', fontSize: 11, marginBottom: 20},
-  setWeeklyText: {marginTop: 20},
+  setWeeklyText: {
+    color: Colors.secondary,
+    fontSize: Styles.FontSize.medium,
+    marginStart: Styles.Spacing.small,
+  },
+  weeklyTextContainer: {
+    flexDirection: 'row',
+    marginVertical: Styles.Spacing.medium,
+  },
 });
 
 export default SpendingLimitScreen;

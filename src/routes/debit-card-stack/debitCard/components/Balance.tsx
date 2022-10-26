@@ -2,6 +2,7 @@ import {Colors, Styles} from '@common';
 import {Text} from '@components';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {CurrencyCard} from '@components';
 
 const Balance = () => {
   return (
@@ -9,9 +10,7 @@ const Balance = () => {
       <Text style={styles.debitCardText}>Debit Card</Text>
       <Text style={styles.availableBalance}>Available balance</Text>
       <View style={styles.balanceContainer}>
-        <View style={styles.currencyContainer}>
-          <Text>S$</Text>
-        </View>
+        <CurrencyCard />
         <Text style={styles.amount}>3000</Text>
       </View>
     </View>

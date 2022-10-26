@@ -1,29 +1,17 @@
-import {createReducer, createActions} from 'reduxsauce';
-import {DebitCardTypes} from './debitCard.actions';
+import {Action, IPayLoad} from '@models/actions/common';
+import {CardInfo} from '@models/debitCard';
+import {IDebitCardState} from '@models/reducers/debitCard';
 
-export const INITIAL_STATE = {
-  isReady: false,
-  isShowingIndicator: false,
+const initialState: IDebitCardState = {
+  cardInfo: {} as CardInfo,
+  spendLimitList: [],
+  spendLimit: 0,
+  isSpendLimit: false,
 };
 
-export const startupRequest = (state: any) => {
-  return {...state, isReady: false};
+export default (state = initialState, action: Action<IPayLoad>) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
 };
-export const startupSuccess = (state: any) => {
-  return {...state, isReady: true};
-};
-
-export const showIndicator = (state: any) => {
-  return {...state, isShowingIndicator: true};
-};
-export const hideIndicator = (state: any) => {
-  return {...state, isShowingIndicator: false};
-};
-
-export const reducer = createReducer(INITIAL_STATE, {
-  [DebitCardTypes.STARTUP_REQUEST]: startupRequest,
-  [DebitCardTypes.STARTUP_SUCCESS]: startupSuccess,
-
-  [DebitCardTypes.SHOW_INDICATOR]: showIndicator,
-  [DebitCardTypes.HIDE_INDICATOR]: hideIndicator,
-});
