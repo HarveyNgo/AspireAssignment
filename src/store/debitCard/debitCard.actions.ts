@@ -4,6 +4,14 @@ import {
   IGetBalanceSuccessPayLoad,
   IGetCardInfoPayLoad,
   IGetCardInfoSuccessPayLoad,
+  IGetCurrentSpendPayLoad,
+  IGetCurrentSpendSuccessPayLoad,
+  IGetIsSpendLimitPayLoad,
+  IGetIsSpendLimitSuccessPayLoad,
+  IGetSpendLimitPayLoad,
+  IGetSpendLimitSuccessPayLoad,
+  ISaveSpendLimitPayLoad,
+  ISetIsSpendLimitPayLoad,
 } from '@models/actions/debitCard';
 import {CardInfo} from '@models/debitCard';
 import DebitCardTypes from './debitCard.types';
@@ -31,4 +39,69 @@ const getCardInfoSuccess = (
   payload: {cardInfo},
 });
 
-export default {getBalance, getBalanceSuccess, getCardInfo, getCardInfoSuccess};
+const saveSpendLimit = (
+  spendLimit: number,
+  callback: ICallback,
+): Action<ISaveSpendLimitPayLoad> => ({
+  type: DebitCardTypes.SAVE_SPEND_LIMIT,
+  payload: {spendLimit},
+  callback,
+});
+
+const getSpendLimit = (): Action<IGetSpendLimitPayLoad> => ({
+  type: DebitCardTypes.GET_SPEND_LIMIT,
+  payload: {},
+});
+
+const getSpendLimitSuccess = (
+  spendLimit: number,
+): Action<IGetSpendLimitSuccessPayLoad> => ({
+  type: DebitCardTypes.GET_SPEND_LIMIT_SUCCESS,
+  payload: {spendLimit},
+});
+
+export const getIsSpendLimit = (): Action<IGetIsSpendLimitPayLoad> => ({
+  type: DebitCardTypes.GET_IS_SPEND_LIMIT,
+  payload: {},
+});
+
+export const setIsSpendLimit = (
+  isSpendLimit: boolean,
+): Action<ISetIsSpendLimitPayLoad> => ({
+  type: DebitCardTypes.SET_IS_SPEND_LIMIT,
+  payload: {isSpendLimit},
+});
+
+export const getIsSpendLimitSuccess = (
+  isSpendLimit: boolean,
+): Action<IGetIsSpendLimitSuccessPayLoad> => ({
+  type: DebitCardTypes.GET_IS_SPEND_LIMIT_SUCCESS,
+  payload: {isSpendLimit},
+});
+
+const getCurrentSpend = (): Action<IGetCurrentSpendPayLoad> => ({
+  type: DebitCardTypes.GET_CURRENT_SPEND,
+  payload: {},
+});
+
+const getCurrentSpendSuccess = (
+  currentSpend: number,
+): Action<IGetCurrentSpendSuccessPayLoad> => ({
+  type: DebitCardTypes.GET_CURRENT_SPEND_SUCCESS,
+  payload: {currentSpend},
+});
+
+export default {
+  getBalance,
+  getBalanceSuccess,
+  getCardInfo,
+  getCardInfoSuccess,
+  saveSpendLimit,
+  getSpendLimit,
+  getSpendLimitSuccess,
+  getIsSpendLimit,
+  setIsSpendLimit,
+  getIsSpendLimitSuccess,
+  getCurrentSpend,
+  getCurrentSpendSuccess,
+};

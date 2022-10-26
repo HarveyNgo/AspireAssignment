@@ -10,3 +10,28 @@ export interface IGetBalanceSuccessPayLoad extends IPayLoad {
 export interface IGetCardInfoSuccessPayLoad extends IPayLoad {
   cardInfo: CardInfo;
 }
+
+export interface ISaveSpendLimitPayLoad extends IPayLoad {
+  spendLimit: number;
+}
+
+export interface IGetSpendLimitSuccessPayLoad extends IPayLoad {
+  spendLimit: number;
+}
+export interface IGetIsSpendLimitPayLoad extends IPayLoad {}
+export interface ISetIsSpendLimitPayLoad extends IPayLoad {
+  isSpendLimit: boolean;
+}
+
+export interface IGetIsSpendLimitSuccessPayLoad extends IPayLoad {
+  isSpendLimit: boolean;
+}
+
+export interface IGetSpendLimitPayLoad extends IPayLoad {}
+export interface IGetCardInfoPayLoad extends IPayLoad {}
+
+export interface IGetCurrentSpendPayLoad extends IPayLoad {}
+
+export interface IGetCurrentSpendSuccessPayLoad extends IPayLoad {
+  currentSpend: number;
+}

@@ -1,13 +1,19 @@
 import {WeekLimitIcon} from '@assets/icons';
 import {Colors, Styles} from '@common';
 import {Container, CurrencyCard, Text, Title} from '@components';
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {DebitCardActions} from 'src/store/actions';
 import SaveButton from './components/SaveButton';
 import SpendLimitList from './components/SuggestionList';
 
 const SpendingLimitScreen = () => {
   const [spendLimitAmount, setSpendLimitAmount] = useState(0);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const onChangeText = (value: string) => {
     setSpendLimitAmount(Number(value));
   };
@@ -44,10 +50,15 @@ const SpendingLimitScreen = () => {
           <SaveButton
             haveSpendAmount={false}
             onPress={() => {
-              // const spendLimitAmount = formatNumberNoCommas(
-              //   this.state.spendLimit,
-              // );
-              // this.props.saveSpendLimit(spendLimitAmount);
+              dispatch(DebitCardActions.getBalance());
+              dispatch(
+                DebitCardActions.saveSpendLimit(spendLimitAmount, {
+                  callbackSuccess: () => {
+                    dispatch(DebitCardActions.setIsSpendLimit(true));
+                    navigation.goBack();
+                  },
+                }),
+              );
             }}
           />
         </View>

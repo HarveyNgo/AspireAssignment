@@ -13,7 +13,24 @@ export const getCardInfo = createSelector(
   debitCard => debitCard.cardInfo,
 );
 
+export const getIsSpendLimit = createSelector(
+  _selectDebitCard,
+  debitCard => debitCard.isSpendLimit,
+);
+export const getSpendLimit = createSelector(
+  _selectDebitCard,
+  debitCard => debitCard.spendLimit,
+);
+
+export const getCurrentSpend = createSelector(
+  _selectDebitCard,
+  debitCard => debitCard.currentSpend,
+);
+
 export default {
   getBalance,
   getCardInfo,
+  getIsSpendLimit,
+  getSpendLimit,
+  getCurrentSpend,
 };

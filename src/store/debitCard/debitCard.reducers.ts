@@ -2,6 +2,9 @@ import {Action, IPayLoad} from '@models/actions/common';
 import {
   IGetBalanceSuccessPayLoad,
   IGetCardInfoSuccessPayLoad,
+  IGetCurrentSpendSuccessPayLoad,
+  IGetIsSpendLimitSuccessPayLoad,
+  IGetSpendLimitSuccessPayLoad,
 } from '@models/actions/debitCard';
 import {CardInfo} from '@models/debitCard';
 import {IDebitCardState} from '@models/reducers/debitCard';
@@ -13,6 +16,7 @@ const initialState: IDebitCardState = {
   spendLimit: 0,
   isSpendLimit: false,
   balance: 0,
+  currentSpend: 0,
 };
 
 export default (state = initialState, action: Action<IPayLoad>) => {
@@ -29,6 +33,33 @@ export default (state = initialState, action: Action<IPayLoad>) => {
       return {
         ...state,
         cardInfo: getCardInfoSuccess.cardInfo,
+      };
+    }
+    case DebitCardTypes.GET_SPEND_LIMIT_SUCCESS: {
+      const getSpendLimitSuccess = <IGetSpendLimitSuccessPayLoad>action.payload;
+      return {
+        ...state,
+        spendLimit: getSpendLimitSuccess.spendLimit,
+      };
+    }
+
+    case DebitCardTypes.GET_IS_SPEND_LIMIT_SUCCESS: {
+      const getIsSpendLimitSuccess = <IGetIsSpendLimitSuccessPayLoad>(
+        action.payload
+      );
+      return {
+        ...state,
+        isSpendLimit: getIsSpendLimitSuccess.isSpendLimit,
+      };
+    }
+
+    case DebitCardTypes.GET_CURRENT_SPEND_SUCCESS: {
+      const getCurrentSpendSuccess = <IGetCurrentSpendSuccessPayLoad>(
+        action.payload
+      );
+      return {
+        ...state,
+        currentSpend: getCurrentSpendSuccess.currentSpend,
       };
     }
 

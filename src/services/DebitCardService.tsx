@@ -1,5 +1,4 @@
 import {CardInfo, SpendingLimitSuggestion} from '../models/debitCard';
-// import AsyncStorage from '@react-native-community/async-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HenryCard: CardInfo = {
@@ -25,9 +24,12 @@ const spendLimitSuggestionList: Array<SpendingLimitSuggestion> = [
   },
 ];
 
+const CURRENT_SPEND = 345;
+const BALANCE = 3000;
+
 class DebitCardService {
   public getBalance = (): number => {
-    return 3000;
+    return BALANCE;
   };
 
   public getCardInfo = (): CardInfo => {
@@ -75,6 +77,10 @@ class DebitCardService {
     } catch (e) {
       return undefined;
     }
+  };
+
+  public getCurrentSpend = (): number => {
+    return CURRENT_SPEND;
   };
 }
 

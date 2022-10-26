@@ -6,4 +6,5 @@ export interface IDebitCardState {
   spendLimit: number;
   isSpendLimit: boolean;
   balance: number;
+  currentSpend: number;
 }

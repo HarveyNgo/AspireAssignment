@@ -10,15 +10,33 @@ import {DebitCardSelectors} from 'src/store/selectors';
 import Balance from './components/Balance';
 import DebitCardInfo from './components/DebitCardInfo';
 import FunctionList from './components/FunctionList';
+import SpendLimitView from './components/SpendLimitView';
 const DebitCardScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const balance = useSelector(DebitCardSelectors.getBalance, shallowEqual);
   const cardInfo = useSelector(DebitCardSelectors.getCardInfo, shallowEqual);
+  const isSpendLimit = useSelector(
+    DebitCardSelectors.getIsSpendLimit,
+    shallowEqual,
+  );
+  const spendLimit = useSelector(
+    DebitCardSelectors.getSpendLimit,
+    shallowEqual,
+  );
+  const currentSpend = useSelector(
+    DebitCardSelectors.getCurrentSpend,
+    shallowEqual,
+  );
+
+  console.log('hung currentSpend:', currentSpend);
 
   useEffect(() => {
     dispatch(DebitCardActions.getBalance());
     dispatch(DebitCardActions.getCardInfo());
+    dispatch(DebitCardActions.getIsSpendLimit());
+    dispatch(DebitCardActions.getSpendLimit());
+    dispatch(DebitCardActions.getCurrentSpend());
   }, []);
 
   return (
@@ -27,13 +45,10 @@ const DebitCardScreen = () => {
       <SlideViewWithPanResponder>
         <View style={styles.cardContainer}>
           <DebitCardInfo cardInfo={cardInfo} />
+          <SpendLimitView spendLimit={spendLimit} currentSpend={currentSpend} />
           <FunctionList
             goToSpendingLimit={() => {
-              console.log('hung goToSpendingLimit');
               navigation.navigate(Routers.SpendingLimitScreen);
-              // navigation.navigate(Routers.DebitCardStack, {
-              //   screen: Routers.SpendingLimitScreen,
-              // });
             }}
           />
         </View>
