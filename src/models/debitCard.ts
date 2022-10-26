@@ -7,14 +7,19 @@ export interface CardInfo {
 }
 
 export interface CardFunction {
+  id: string;
   name: String;
   description: String;
-  isShowToggle: Boolean;
-  isToggle: Boolean;
+  isShowToggle: boolean;
+  isToggle: boolean;
   icon: any;
 }
 
 export interface SpendingLimitSuggestion {
   id: number;
   number: number;
+}
+
+export interface IInputValidation {
+  spendLimitAmount: number;
 }

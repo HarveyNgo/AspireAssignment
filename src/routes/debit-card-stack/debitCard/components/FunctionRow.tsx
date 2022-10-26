@@ -7,18 +7,12 @@ type FunctionRowProps = {
   item: CardFunction;
   onRowPress?: () => void;
   onSwitchPress?: (value: boolean) => void;
-  switchValue?: boolean;
 };
 
-const FunctionRow: React.FC<FunctionRowProps> = ({
-  item,
-  onRowPress,
-  onSwitchPress,
-  switchValue,
-}) => {
+const FunctionRow: React.FC<FunctionRowProps> = ({item, onSwitchPress}) => {
   const Icon = item.icon;
   return (
-    <TouchableOpacity onPress={onRowPress} style={styles.rowContainer}>
+    <View style={styles.rowContainer}>
       <View style={{flexDirection: 'row'}}>
         <Icon />
         <View style={styles.nameContainer}>
@@ -33,14 +27,14 @@ const FunctionRow: React.FC<FunctionRowProps> = ({
             false: '#E9E9EB',
             true: '#34C759',
           }}
-          value={switchValue}
-          disabled={!switchValue}
+          value={item.isToggle}
+          // disabled={!switchValue}
           onValueChange={value => {
             onSwitchPress && onSwitchPress(value);
           }}
         />
       )}
-    </TouchableOpacity>
+    </View>
   );
 };
 

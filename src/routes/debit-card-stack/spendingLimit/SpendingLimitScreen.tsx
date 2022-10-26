@@ -3,11 +3,15 @@ import {Colors, Styles} from '@common';
 import {Container, CurrencyCard, Text, Title} from '@components';
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {DebitCardActions} from 'src/store/actions';
 import SaveButton from './components/SaveButton';
 import SpendLimitList from './components/SuggestionList';
+import {Formik} from 'formik';
+import * as yup from 'yup';
+import InputView from './components/InputView';
+import InputHeader from './components/InputHeader';
 
 const SpendingLimitScreen = () => {
   const [spendLimitAmount, setSpendLimitAmount] = useState(0);
@@ -17,83 +21,69 @@ const SpendingLimitScreen = () => {
   const onChangeText = (value: string) => {
     setSpendLimitAmount(Number(value));
   };
+
+  const onSubmit = (amount: number) => {
+    dispatch(
+      DebitCardActions.saveSpendLimit(amount, {
+        callbackSuccess: () => {
+          dispatch(DebitCardActions.setIsSpendLimit(true));
+          navigation.goBack();
+        },
+      }),
+    );
+  };
   return (
     <Container>
       <Title title={'Spending Limit'} />
       <View style={styles.functionContainer}>
-        <View style={{height: '85%'}}>
-          <View style={styles.weeklyTextContainer}>
-            <WeekLimitIcon color={Colors.secondary} />
-            <Text style={styles.setWeeklyText}>
-              Set the weekly debit card spending limit
-            </Text>
-          </View>
-          <View style={styles.inputContainer}>
-            <CurrencyCard />
-            <TextInput
-              onChangeText={onChangeText}
-              value={String(spendLimitAmount)}
-              style={styles.input}
-            />
-          </View>
-          <View style={styles.seperator} />
-          <Text style={styles.explaination}>
-            Here weekly means the last 7 days - not the calendar week
-          </Text>
-          <SpendLimitList
-            onPress={spendLimitItem => {
-              setSpendLimitAmount(spendLimitItem.number);
-            }}
-          />
-        </View>
-        <View style={styles.saveButtonContainer}>
-          <SaveButton
-            haveSpendAmount={false}
-            onPress={() => {
-              dispatch(DebitCardActions.getBalance());
-              dispatch(
-                DebitCardActions.saveSpendLimit(spendLimitAmount, {
-                  callbackSuccess: () => {
-                    dispatch(DebitCardActions.setIsSpendLimit(true));
-                    navigation.goBack();
-                  },
-                }),
-              );
-            }}
-          />
-        </View>
+        <Formik
+          initialValues={{
+            spendLimitAmount: spendLimitAmount,
+          }}
+          enableReinitialize={true}
+          onSubmit={values => {
+            console.log('hung onSubmit values:', values);
+            onSubmit(values.spendLimitAmount);
+          }}
+          validationSchema={yup.object().shape({
+            spendLimitAmount: yup
+              .number()
+              .moreThan(0, 'must be greater than 0')
+              .required('this field is require'),
+          })}>
+          {({handleChange, handleSubmit, values, errors, touched}) => (
+            <>
+              <View style={{height: '85%'}}>
+                <InputHeader />
+                <InputView
+                  handleChange={handleChange}
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                  spendLimitAmount={spendLimitAmount}
+                />
+                <View style={styles.seperator} />
+                <Text style={styles.explaination}>
+                  Here weekly means the last 7 days - not the calendar week
+                </Text>
+                <SpendLimitList
+                  onPress={spendLimitItem => {
+                    setSpendLimitAmount(spendLimitItem.number);
+                  }}
+                />
+              </View>
+              <View style={styles.saveButtonContainer}>
+                <SaveButton haveSpendAmount={false} onPress={handleSubmit} />
+              </View>
+            </>
+          )}
+        </Formik>
       </View>
     </Container>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0c365a',
-  },
-  subContainer: {
-    flex: 1,
-  },
-
-  debitCardText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
-  availableBalance: {
-    color: 'white',
-    marginTop: 15,
-  },
-  balanceContainer: {
-    flexDirection: 'row',
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  currency: {
-    color: 'white',
-    marginRight: 10,
-  },
   functionContainer: {
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -103,15 +93,7 @@ const styles = StyleSheet.create({
     marginHorizontal: -18,
     height: '90%',
   },
-  input: {
-    fontSize: 15,
-    borderRadius: 25,
-    fontWeight: 'bold',
-    marginBottom: 5,
-    flex: 1,
-    marginTop: 4,
-    marginStart: 5,
-  },
+
   saveButtonContainer: {
     alignSelf: 'center',
     // position: 'absolute',
@@ -119,25 +101,14 @@ const styles = StyleSheet.create({
     // marginBottom: 10,
     width: '60%',
   },
-  inputContainer: {flexDirection: 'row', marginTop: 10, alignItems: 'center'},
   seperator: {
     width: '100%',
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: Colors.deactive,
-    marginTop: 10,
     marginBottom: 10,
   },
   explaination: {color: 'grey', fontSize: 11, marginBottom: 20},
-  setWeeklyText: {
-    color: Colors.secondary,
-    fontSize: Styles.FontSize.medium,
-    marginStart: Styles.Spacing.small,
-  },
-  weeklyTextContainer: {
-    flexDirection: 'row',
-    marginVertical: Styles.Spacing.medium,
-  },
 });
 
 export default SpendingLimitScreen;

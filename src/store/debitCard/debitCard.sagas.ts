@@ -71,6 +71,9 @@ function* setIsSpendLimit(action: Action<ISetIsSpendLimitPayLoad>): any {
   const service = new DebitCardService();
   const payload = <ISetIsSpendLimitPayLoad>action.payload;
   const result = yield service.setIsSpendLimit(payload.isSpendLimit);
+  if (result !== undefined) {
+    yield put(DebitCardActions.getIsSpendLimitSuccess(result));
+  }
 }
 
 function* getCurrentSpend(action: Action<IGetCurrentSpendPayLoad>): any {

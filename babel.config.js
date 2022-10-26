@@ -14,6 +14,7 @@ module.exports = {
           '@models': './src/models',
           '@common': './src/common',
           '@utils': './src/utils',
+          '@constants': './src/constants',
         },
       },
     ],

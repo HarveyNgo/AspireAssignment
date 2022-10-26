@@ -1,10 +1,12 @@
 import {Colors, Styles} from '@common';
 import {Container, SlideViewWithPanResponder} from '@components';
-import {useNavigation} from '@react-navigation/native';
+import {CardFunction} from '@models/debitCard';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {Routers} from '@routes/index';
 import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
+import {FUNCTION_ID} from 'src/constants/debitCard';
 import {DebitCardActions} from 'src/store/actions';
 import {DebitCardSelectors} from 'src/store/selectors';
 import Balance from './components/Balance';
@@ -14,6 +16,7 @@ import SpendLimitView from './components/SpendLimitView';
 const DebitCardScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const isFocused = useIsFocused();
   const balance = useSelector(DebitCardSelectors.getBalance, shallowEqual);
   const cardInfo = useSelector(DebitCardSelectors.getCardInfo, shallowEqual);
   const isSpendLimit = useSelector(
@@ -29,7 +32,7 @@ const DebitCardScreen = () => {
     shallowEqual,
   );
 
-  console.log('hung currentSpend:', currentSpend);
+  console.log('hung isSpendLimit:', isSpendLimit);
 
   useEffect(() => {
     dispatch(DebitCardActions.getBalance());
@@ -39,16 +42,37 @@ const DebitCardScreen = () => {
     dispatch(DebitCardActions.getCurrentSpend());
   }, []);
 
+  useEffect(() => {
+    if (isFocused) {
+      dispatch(DebitCardActions.getIsSpendLimit());
+      dispatch(DebitCardActions.getSpendLimit());
+      dispatch(DebitCardActions.getCurrentSpend());
+    }
+  }, [isFocused]);
+
   return (
     <Container showBackIcon={false}>
       <Balance balance={balance} />
       <SlideViewWithPanResponder>
         <View style={styles.cardContainer}>
           <DebitCardInfo cardInfo={cardInfo} />
-          <SpendLimitView spendLimit={spendLimit} currentSpend={currentSpend} />
+          {isSpendLimit && (
+            <SpendLimitView
+              spendLimit={spendLimit}
+              currentSpend={currentSpend}
+            />
+          )}
           <FunctionList
-            goToSpendingLimit={() => {
-              navigation.navigate(Routers.SpendingLimitScreen);
+            isSpendLimit={isSpendLimit}
+            onSwitchPress={(item: CardFunction) => {
+              if (item.id == FUNCTION_ID.WEEK_SPEND_LIMIT) {
+                if (item.isToggle) {
+                  dispatch(DebitCardActions.setIsSpendLimit(false));
+                  
+                } else {
+                  navigation.navigate(Routers.SpendingLimitScreen);
+                }
+              }
             }}
           />
         </View>
