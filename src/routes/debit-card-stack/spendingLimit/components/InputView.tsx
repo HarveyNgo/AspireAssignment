@@ -37,7 +37,6 @@ const InputView: React.FC<InputViewProps> = ({
             value={String(values.spendLimitAmount)}
             style={styles.input}
             keyboardType="numeric"
-            underlineColorAndroid="transparent"
           />
         </View>
       </View>
