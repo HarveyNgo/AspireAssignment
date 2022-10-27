@@ -14,6 +14,7 @@ test('renders correctly', () => {
         onChangeValue={function (value: string): void {
           throw new Error('Function not implemented.');
         }}
+        currency={''}
       />,
     )
     .toJSON();
