@@ -7,10 +7,10 @@ test('renders correctly', () => {
   const tree = renderer
     .create(
       <InputView
-        handleChange={undefined}
-        values={undefined}
-        errors={undefined}
-        touched={undefined}
+        handleChange={{} as any}
+        values={{} as any}
+        errors={{} as any}
+        touched={{} as any}
         onChangeValue={function (value: string): void {
           throw new Error('Function not implemented.');
         }}

@@ -6,8 +6,3 @@ test('renders correctly', () => {
   const tree = renderer.create(<Container />).toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-// test('renders correctly with style', () => {
-//   const tree = renderer.create(<Container showLoader={false} />).toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
