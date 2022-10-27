@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 20,
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
-    borderRightColor: 'transparent',
+    borderRightColor: '#e5faf0',
     borderTopColor: Colors.primary,
     height: 20,
   },
