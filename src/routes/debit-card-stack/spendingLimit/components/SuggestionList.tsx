@@ -19,13 +19,21 @@ const data = [
 ];
 type SuggestionListProps = {
   onPress?: (item: SpendingLimitSuggestion) => void;
+  currency: string;
 };
 
-const SuggestionList: React.FC<SuggestionListProps> = ({onPress}) => {
+const SuggestionList: React.FC<SuggestionListProps> = ({onPress, currency}) => {
   return (
     <View style={styles.container}>
       {data.map(item => {
-        return <SuggestionItem key={item.id} item={item} onPress={onPress} />;
+        return (
+          <SuggestionItem
+            key={item.id}
+            item={item}
+            onPress={onPress}
+            currency={currency}
+          />
+        );
       })}
     </View>
   );

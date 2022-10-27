@@ -49,37 +49,9 @@ const DebitCardInfo: React.FC<DebitCardInfoProps> = ({cardInfo}) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: Styles.Spacing.large,
-    marginTop: -100,
+    marginTop: -50,
   },
-  debitCardInfoContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    marginHorizontal: 10,
-  },
-  debitCardText: {
-    color: Colors.white,
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
-  availableBalance: {
-    color: Colors.white,
-    marginTop: 15,
-  },
-  balanceContainer: {
-    flexDirection: 'row',
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  currency: {
-    color: Colors.white,
-    marginRight: 10,
-  },
-  functionContainer: {
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
-    backgroundColor: 'white',
-    flex: 2,
-  },
+
   appName: {marginStart: Styles.Spacing.small, fontWeight: 'bold'},
   clientName: {
     marginTop: 20,

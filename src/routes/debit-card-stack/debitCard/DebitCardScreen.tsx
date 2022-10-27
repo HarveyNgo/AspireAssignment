@@ -32,6 +32,7 @@ const DebitCardScreen = () => {
     DebitCardSelectors.getCurrentSpend,
     shallowEqual,
   );
+  const currency = useSelector(DebitCardSelectors.getCurrency, shallowEqual);
 
   useEffect(() => {
     dispatch(DebitCardActions.getBalance());
@@ -39,6 +40,7 @@ const DebitCardScreen = () => {
     dispatch(DebitCardActions.getIsSpendLimit());
     dispatch(DebitCardActions.getSpendLimit());
     dispatch(DebitCardActions.getCurrentSpend());
+    dispatch(DebitCardActions.getCurrency());
   }, []);
 
   useEffect(() => {
@@ -46,12 +48,13 @@ const DebitCardScreen = () => {
       dispatch(DebitCardActions.getIsSpendLimit());
       dispatch(DebitCardActions.getSpendLimit());
       dispatch(DebitCardActions.getCurrentSpend());
+      dispatch(DebitCardActions.getCurrency());
     }
   }, [isFocused]);
 
   return (
     <Container showBackIcon={false}>
-      <Balance balance={balance} />
+      <Balance balance={balance} currency={currency} />
       <SlideViewWithPanResponder>
         <View style={styles.cardContainer}>
           <DebitCardInfo cardInfo={cardInfo} />
@@ -64,7 +67,7 @@ const DebitCardScreen = () => {
           <FunctionList
             isSpendLimit={isSpendLimit}
             onSwitchPress={(item: CardFunction) => {
-              if (item.id == FUNCTION_ID.WEEK_SPEND_LIMIT) {
+              if (item.id === FUNCTION_ID.WEEK_SPEND_LIMIT) {
                 if (item.isToggle) {
                   dispatch(DebitCardActions.setIsSpendLimit(false));
                 } else {

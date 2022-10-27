@@ -35,3 +35,9 @@ export interface IGetCurrentSpendPayLoad extends IPayLoad {}
 export interface IGetCurrentSpendSuccessPayLoad extends IPayLoad {
   currentSpend: number;
 }
+
+export interface IGetCurrencyPayLoad extends IPayLoad {}
+
+export interface IGetCurrencySuccessPayLoad extends IPayLoad {
+  currency: string;
+}

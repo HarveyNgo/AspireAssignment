@@ -12,10 +12,10 @@ import Text from '../Text';
 interface CurrencyCardProps {
   currency?: string;
 }
-const CurrencyCard: React.FC<CurrencyCardProps> = ({currency = 'S'}) => {
+const CurrencyCard: React.FC<CurrencyCardProps> = ({currency = 'S$'}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.currency}>{currency}$</Text>
+      <Text style={styles.currency}>{currency}</Text>
     </View>
   );
 };

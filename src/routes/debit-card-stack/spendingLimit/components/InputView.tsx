@@ -1,9 +1,9 @@
-import {Colors} from '@common';
+import {Colors, Styles} from '@common';
 import {CurrencyCard, Text} from '@components';
 import {IInputValidation} from '@models/debitCard';
 import {FormikErrors, FormikTouched, getIn} from 'formik';
 import React, {useEffect} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {Platform, StyleSheet, TextInput, View} from 'react-native';
 
 type InputViewProps = {
   handleChange: Function;
@@ -11,6 +11,7 @@ type InputViewProps = {
   errors: FormikErrors<IInputValidation>;
   touched: FormikTouched<IInputValidation>;
   onChangeValue: (value: string) => void;
+  currency: string;
 };
 const InputView: React.FC<InputViewProps> = ({
   handleChange,
@@ -18,6 +19,7 @@ const InputView: React.FC<InputViewProps> = ({
   errors,
   touched,
   onChangeValue,
+  currency,
 }) => {
   const fieldValue = getIn(values, 'spendLimitAmount');
 
@@ -28,16 +30,18 @@ const InputView: React.FC<InputViewProps> = ({
   return (
     <View>
       <View style={styles.inputContainer}>
-        <CurrencyCard />
+        <CurrencyCard currency={currency} />
         <View>
           <TextInput
             onChangeText={handleChange('spendLimitAmount')}
             value={String(values.spendLimitAmount)}
             style={styles.input}
+            keyboardType="numeric"
+            underlineColorAndroid="transparent"
           />
         </View>
       </View>
-      <Text style={{color: Colors.red}}>
+      <Text style={styles.error}>
         {touched.spendLimitAmount && errors.spendLimitAmount}
       </Text>
     </View>
@@ -46,18 +50,18 @@ const InputView: React.FC<InputViewProps> = ({
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: 15,
-    borderRadius: 25,
+    fontSize: Styles.FontSize.medium,
     fontWeight: 'bold',
-    marginBottom: 5,
-    flex: 1,
-    marginTop: 4,
     marginStart: 5,
-    // backgroundColor: 'blue',
     width: 100,
+    color: Colors.black,
   },
 
-  inputContainer: {flexDirection: 'row', marginTop: 10, alignItems: 'center'},
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  error: {color: Colors.red},
 });
 
 export default InputView;

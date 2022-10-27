@@ -17,7 +17,7 @@ const Container: React.FC<ContainerProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{}}>
+      <SafeAreaView style={{flex: 1}}>
         {showHeader && <Header showBackIcon={showBackIcon} />}
         {children}
       </SafeAreaView>
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: Colors.backgroundColor,
     paddingHorizontal: Styles.Spacing.xlarge,
+    flex: 1,
   },
 });
 

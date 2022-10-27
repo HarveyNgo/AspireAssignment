@@ -13,7 +13,7 @@ const FunctionRow: React.FC<FunctionRowProps> = ({item, onSwitchPress}) => {
   const Icon = item.icon;
   return (
     <View style={styles.rowContainer}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.iconContainer}>
         <Icon />
         <View style={styles.nameContainer}>
           <Text style={styles.name}>{item.name}</Text>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 16,
+    marginVertical: 12,
   },
   nameContainer: {marginStart: Styles.Spacing.medium},
   name: {
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   description: {
     color: Colors.deactive,
   },
+  iconContainer: {flexDirection: 'row'},
 });
 
 export default FunctionRow;

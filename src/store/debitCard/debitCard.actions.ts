@@ -4,6 +4,8 @@ import {
   IGetBalanceSuccessPayLoad,
   IGetCardInfoPayLoad,
   IGetCardInfoSuccessPayLoad,
+  IGetCurrencyPayLoad,
+  IGetCurrencySuccessPayLoad,
   IGetCurrentSpendPayLoad,
   IGetCurrentSpendSuccessPayLoad,
   IGetIsSpendLimitPayLoad,
@@ -91,6 +93,18 @@ const getCurrentSpendSuccess = (
   payload: {currentSpend},
 });
 
+const getCurrency = (): Action<IGetCurrencyPayLoad> => ({
+  type: DebitCardTypes.GET_CURRENCY,
+  payload: {},
+});
+
+const getCurrencySuccess = (
+  currency: string,
+): Action<IGetCurrencySuccessPayLoad> => ({
+  type: DebitCardTypes.GET_CURRENCY_SUCCESS,
+  payload: {currency},
+});
+
 export default {
   getBalance,
   getBalanceSuccess,
@@ -104,4 +118,6 @@ export default {
   getIsSpendLimitSuccess,
   getCurrentSpend,
   getCurrentSpendSuccess,
+  getCurrency,
+  getCurrencySuccess,
 };

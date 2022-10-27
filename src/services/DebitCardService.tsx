@@ -27,6 +27,8 @@ const spendLimitSuggestionList: Array<SpendingLimitSuggestion> = [
 const CURRENT_SPEND = 345;
 const BALANCE = 3000;
 
+const CURRENCY = 'S$';
+
 class DebitCardService {
   public getBalance = (): number => {
     return BALANCE;
@@ -81,6 +83,10 @@ class DebitCardService {
 
   public getCurrentSpend = (): number => {
     return CURRENT_SPEND;
+  };
+
+  public getCurrency = (): string => {
+    return CURRENCY;
   };
 }
 

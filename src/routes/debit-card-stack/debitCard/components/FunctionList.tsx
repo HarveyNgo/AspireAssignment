@@ -5,7 +5,7 @@ import {
   TopupIcon,
   WeekSpendLimitIcon,
 } from '@assets/icons';
-import {Styles} from '@common';
+import {Colors, Styles} from '@common';
 import {CardFunction} from '@models/debitCard';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
@@ -71,7 +71,6 @@ const FunctionList: React.FC<FunctionListProps> = ({
             key={index}
             item={item}
             onSwitchPress={value => onSwitchPress(item)}
-            // onRowPress={() => goToSpendingLimit()}
           />
         );
       })}
@@ -81,13 +80,13 @@ const FunctionList: React.FC<FunctionListProps> = ({
 
 const styles = StyleSheet.create({
   functionRowContainer: {
-    marginTop: 20,
+    marginTop: Styles.Spacing.large,
     marginHorizontal: Styles.Spacing.medium,
   },
   functionContainer: {
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    backgroundColor: 'white',
+    borderTopRightRadius: Styles.Spacing.large,
+    borderTopLeftRadius: Styles.Spacing.large,
+    backgroundColor: Colors.white,
   },
 });
 

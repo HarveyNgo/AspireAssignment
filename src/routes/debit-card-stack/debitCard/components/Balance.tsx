@@ -7,14 +7,15 @@ import {formatAmount} from '@utils/format';
 
 type BalanceProps = {
   balance: number;
+  currency: string;
 };
-const Balance: React.FC<BalanceProps> = ({balance}) => {
+const Balance: React.FC<BalanceProps> = ({balance, currency}) => {
   return (
     <View style={styles.container}>
       <Title title="Debit Card" />
       <Text style={styles.availableBalance}>Available balance</Text>
       <View style={styles.balanceContainer}>
-        <CurrencyCard />
+        <CurrencyCard currency={currency} />
         <Text style={styles.amount}>{formatAmount(balance)}</Text>
       </View>
     </View>

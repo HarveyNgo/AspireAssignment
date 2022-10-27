@@ -7,14 +7,19 @@ import {formatAmount} from '@utils/format';
 type SuggestionItemProps = {
   item: SpendingLimitSuggestion;
   onPress?: (item: SpendingLimitSuggestion) => void;
+  currency: string;
 };
 
-const SuggestionItem: React.FC<SuggestionItemProps> = ({item, onPress}) => {
+const SuggestionItem: React.FC<SuggestionItemProps> = ({
+  item,
+  onPress,
+  currency,
+}) => {
   return (
     <TouchableOpacity
       style={styles.container}
       onPress={() => onPress && onPress(item)}>
-      <Text style={styles.name}>S$ </Text>
+      <Text style={styles.name}>{currency} </Text>
       <Text style={styles.description}>
         {String(formatAmount(item.number))}
       </Text>

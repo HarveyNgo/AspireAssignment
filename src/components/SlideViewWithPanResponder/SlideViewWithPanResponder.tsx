@@ -18,7 +18,10 @@ const SlideViewWithPanResponder: React.FC<SlideViewWithPanResponderProps> = ({
         });
       },
       onPanResponderMove: (event, gestureState) => {
-        Animated.event([null, {dy: pan.y}])(event, gestureState);
+        Animated.event([null, {dy: pan.y}], {useNativeDriver: false})(
+          event,
+          gestureState,
+        );
       },
       onPanResponderRelease: () => {
         pan.flattenOffset();
@@ -34,15 +37,14 @@ const SlideViewWithPanResponder: React.FC<SlideViewWithPanResponderProps> = ({
             {translateX: pan.x},
             {
               translateY: pan.y.interpolate({
-                inputRange: [-50, 100],
-                outputRange: [-50, 100],
+                inputRange: [-100, 100],
+                outputRange: [-100, 100],
                 extrapolate: 'clamp',
               }),
             },
           ],
         }}
         {...panResponder.panHandlers}>
-        {/* <View style={styles.box} /> */}
         {children}
       </Animated.View>
     </View>
@@ -51,14 +53,6 @@ const SlideViewWithPanResponder: React.FC<SlideViewWithPanResponderProps> = ({
 
 const styles = StyleSheet.create({
   container: {},
-
-  box: {
-    marginTop: 100,
-    height: '80%',
-    width: '100%',
-    backgroundColor: 'blue',
-    borderRadius: 5,
-  },
 });
 
 export default SlideViewWithPanResponder;

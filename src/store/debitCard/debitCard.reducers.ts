@@ -2,6 +2,7 @@ import {Action, IPayLoad} from '@models/actions/common';
 import {
   IGetBalanceSuccessPayLoad,
   IGetCardInfoSuccessPayLoad,
+  IGetCurrencySuccessPayLoad,
   IGetCurrentSpendSuccessPayLoad,
   IGetIsSpendLimitSuccessPayLoad,
   IGetSpendLimitSuccessPayLoad,
@@ -17,6 +18,7 @@ const initialState: IDebitCardState = {
   isSpendLimit: false,
   balance: 0,
   currentSpend: 0,
+  currency: '',
 };
 
 export default (state = initialState, action: Action<IPayLoad>) => {
@@ -60,6 +62,14 @@ export default (state = initialState, action: Action<IPayLoad>) => {
       return {
         ...state,
         currentSpend: getCurrentSpendSuccess.currentSpend,
+      };
+    }
+
+    case DebitCardTypes.GET_CURRENCY_SUCCESS: {
+      const getCurrencySuccess = <IGetCurrencySuccessPayLoad>action.payload;
+      return {
+        ...state,
+        currency: getCurrencySuccess.currency,
       };
     }
 
