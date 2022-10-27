@@ -64,7 +64,7 @@ const FunctionList: React.FC<FunctionListProps> = ({
   ];
 
   return (
-    <View style={styles.functionRowContainer}>
+    <View style={styles.container}>
       {data.map((item, index) => {
         return (
           <FunctionRow
@@ -79,14 +79,9 @@ const FunctionList: React.FC<FunctionListProps> = ({
 };
 
 const styles = StyleSheet.create({
-  functionRowContainer: {
+  container: {
     marginTop: Styles.Spacing.large,
     marginHorizontal: Styles.Spacing.medium,
-  },
-  functionContainer: {
-    borderTopRightRadius: Styles.Spacing.large,
-    borderTopLeftRadius: Styles.Spacing.large,
-    backgroundColor: Colors.white,
   },
 });
 

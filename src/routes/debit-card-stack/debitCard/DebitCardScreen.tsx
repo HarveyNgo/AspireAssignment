@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     marginHorizontal: -Styles.Spacing.xlarge,
     borderTopLeftRadius: 18,
     borderTopRightRadius: 18,
-    marginTop: 50,
+    marginTop: 100,
     height: '100%',
   },
 });

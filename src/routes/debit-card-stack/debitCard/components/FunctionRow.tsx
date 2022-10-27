@@ -5,7 +5,6 @@ import {StyleSheet, Switch, Text, View} from 'react-native';
 
 type FunctionRowProps = {
   item: CardFunction;
-  onRowPress?: () => void;
   onSwitchPress?: (value: boolean) => void;
 };
 
@@ -24,14 +23,14 @@ const FunctionRow: React.FC<FunctionRowProps> = ({item, onSwitchPress}) => {
       {item.isShowToggle && (
         <Switch
           trackColor={{
-            false: '#E9E9EB',
-            true: '#34C759',
+            false: Colors.gray,
+            true: Colors.primary,
           }}
           value={item.isToggle}
-          // disabled={!switchValue}
           onValueChange={value => {
             onSwitchPress && onSwitchPress(value);
           }}
+          style={styles.switchStyle}
         />
       )}
     </View>
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 12,
+    marginVertical: 16,
   },
   nameContainer: {marginStart: Styles.Spacing.medium},
   name: {
@@ -52,6 +51,7 @@ const styles = StyleSheet.create({
     color: Colors.deactive,
   },
   iconContainer: {flexDirection: 'row'},
+  switchStyle: {transform: [{scaleX: 0.8}, {scaleY: 0.8}]},
 });
 
 export default FunctionRow;

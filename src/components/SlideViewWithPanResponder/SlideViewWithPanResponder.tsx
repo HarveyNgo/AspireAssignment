@@ -37,8 +37,8 @@ const SlideViewWithPanResponder: React.FC<SlideViewWithPanResponderProps> = ({
             {translateX: pan.x},
             {
               translateY: pan.y.interpolate({
-                inputRange: [-100, 100],
-                outputRange: [-100, 100],
+                inputRange: [-150, 100],
+                outputRange: [-150, 100],
                 extrapolate: 'clamp',
               }),
             },

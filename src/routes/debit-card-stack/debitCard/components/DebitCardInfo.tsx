@@ -49,7 +49,7 @@ const DebitCardInfo: React.FC<DebitCardInfoProps> = ({cardInfo}) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: Styles.Spacing.large,
-    marginTop: -50,
+    marginTop: -100,
   },
 
   appName: {marginStart: Styles.Spacing.small, fontWeight: 'bold'},
