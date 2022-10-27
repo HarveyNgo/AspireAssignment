@@ -8,17 +8,21 @@ export type ContainerProps = {
   showHeader?: boolean;
   showBackIcon?: boolean;
   children?: React.ReactNode;
+  onGoBack?: () => void;
 };
 
 const Container: React.FC<ContainerProps> = ({
   showHeader = true,
   showBackIcon = true,
   children,
+  onGoBack,
 }) => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={{flex: 1}}>
-        {showHeader && <Header showBackIcon={showBackIcon} />}
+        {showHeader && (
+          <Header showBackIcon={showBackIcon} onGoBack={onGoBack} />
+        )}
         {children}
       </SafeAreaView>
     </View>

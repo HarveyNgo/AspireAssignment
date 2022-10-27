@@ -30,6 +30,7 @@
     "redux-saga": "^1.2.1",
     "reduxsauce": "^1.2.1",
     "reselect": "^4.1.6",
+    "ts-jest": "^29.0.3",
     "yup": "^0.32.11"
   },
   "devDependencies": {

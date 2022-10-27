@@ -28,13 +28,16 @@ const SpendingLimitScreen = () => {
       DebitCardActions.saveSpendLimit(amount, {
         callbackSuccess: () => {
           dispatch(DebitCardActions.setIsSpendLimit(true));
-          navigation.goBack();
+          goBack();
         },
       }),
     );
   };
+  const goBack = () => {
+    navigation.goBack();
+  };
   return (
-    <Container>
+    <Container onGoBack={goBack}>
       <Title title={'Spending Limit'} style={styles.spendLimitTitle} />
       <KeyboardAvoidingView style={styles.container}>
         <Formik

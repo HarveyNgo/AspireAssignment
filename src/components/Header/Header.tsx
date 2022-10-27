@@ -1,9 +1,8 @@
-import {useNavigation} from '@react-navigation/native';
+import {isIphoneX} from 'react-native-iphone-x-helper';
 import React from 'react';
-import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {BackIcon, LogoIcon} from '@assets/icons';
 import {Colors} from '@common';
-import {isIphoneX} from 'react-native-iphone-x-helper';
+import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 
 const IS_IPHONE_X = isIphoneX();
 const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? (IS_IPHONE_X ? 44 : 20) : 10;
@@ -14,17 +13,14 @@ const NAV_BAR_HEIGHT = HEADER_HEIGHT - STATUS_BAR_HEIGHT;
 
 type HeaderProps = {
   showBackIcon?: boolean;
+  onGoBack?: () => void;
 };
-const Header: React.FC<HeaderProps> = ({showBackIcon = true}) => {
-  const navigation = useNavigation();
+const Header: React.FC<HeaderProps> = ({showBackIcon = true, onGoBack}) => {
   return (
     <View style={styles.container}>
       <View>
         {showBackIcon && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-            }}>
+          <TouchableOpacity onPress={onGoBack}>
             <BackIcon color={'white'} />
           </TouchableOpacity>
         )}

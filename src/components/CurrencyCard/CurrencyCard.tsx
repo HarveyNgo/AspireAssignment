@@ -1,12 +1,6 @@
-import React from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text as RNText,
-  TextStyle,
-  View,
-} from 'react-native';
 import {Colors, Styles} from '@common';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import Text from '../Text';
 
 interface CurrencyCardProps {

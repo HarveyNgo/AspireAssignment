@@ -3,7 +3,7 @@ import {CurrencyCard, Text} from '@components';
 import {IInputValidation} from '@models/debitCard';
 import {FormikErrors, FormikTouched, getIn} from 'formik';
 import React, {useEffect} from 'react';
-import {Platform, StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 
 type InputViewProps = {
   handleChange: Function;

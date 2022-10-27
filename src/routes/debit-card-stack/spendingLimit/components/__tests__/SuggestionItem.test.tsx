@@ -5,7 +5,7 @@ import SuggestionItem from '../SuggestionItem';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(<SuggestionItem item={{} as any} currency={''} />)
+    .create(<SuggestionItem item={{id: 1, number: 10}} currency={''} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

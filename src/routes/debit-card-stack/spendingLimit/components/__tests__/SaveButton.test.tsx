@@ -5,14 +5,7 @@ import SaveButton from '../SaveButton';
 
 test('renders correctly', () => {
   const tree = renderer
-    .create(
-      <SaveButton
-        haveSpendAmount={false}
-        onPress={function (): void {
-          throw new Error('Function not implemented.');
-        }}
-      />,
-    )
+    .create(<SaveButton haveSpendAmount={false} onPress={() => {}} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

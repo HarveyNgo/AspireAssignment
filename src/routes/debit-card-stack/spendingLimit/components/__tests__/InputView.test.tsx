@@ -1,19 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-
+import {FormikErrors, FormikTouched, getIn} from 'formik';
 import InputView from '../InputView';
 
 test('renders correctly', () => {
   const tree = renderer
     .create(
       <InputView
-        handleChange={{} as any}
-        values={{} as any}
+        handleChange={() => {}}
+        values={{spendLimitAmount: 0}}
         errors={{} as any}
         touched={{} as any}
-        onChangeValue={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
+        onChangeValue={(value: string) => {}}
         currency={''}
       />,
     )
