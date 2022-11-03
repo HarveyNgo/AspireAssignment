@@ -3,6 +3,7 @@ import React, {useCallback, useState} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import ChildComponent from './ChildComponent';
 import CountComponent from './CountComponent';
+import TestReducerComponent from './TestReducerComponent';
 
 const HomeScreen = () => {
   const [user, setUser] = useState({name: 'hung'});
@@ -15,6 +16,8 @@ const HomeScreen = () => {
         }, [user.name])}
       />
       <CountComponent />
+
+      <TestReducerComponent />
     </SafeAreaView>
   );
 };

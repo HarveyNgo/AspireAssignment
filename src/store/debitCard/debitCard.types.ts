@@ -17,6 +17,8 @@ enum DebitCardTypes {
 
   GET_CURRENCY = 'GET_CURRENCY',
   GET_CURRENCY_SUCCESS = 'GET_CURRENCY_SUCCESS',
+
+  HOME_TEST = 'HOME_TEST',
 }
 
 export default DebitCardTypes;

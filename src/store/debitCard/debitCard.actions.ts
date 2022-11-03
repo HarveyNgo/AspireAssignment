@@ -1,4 +1,4 @@
-import {Action, ICallback} from '@models/actions/common';
+import {Action, ICallback, IPayLoad} from '@models/actions/common';
 import {
   IGetBalancePayLoad,
   IGetBalanceSuccessPayLoad,
@@ -105,6 +105,10 @@ const getCurrencySuccess = (
   payload: {currency},
 });
 
+const homeTest = () => ({
+  type: DebitCardTypes.HOME_TEST,
+});
+
 export default {
   getBalance,
   getBalanceSuccess,
@@ -120,4 +124,5 @@ export default {
   getCurrentSpendSuccess,
   getCurrency,
   getCurrencySuccess,
+  homeTest,
 };
